@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Header1 from "../components/HeaderWithIconPerson";
 class MyAlert extends React.Component {
   render() {
     return (
       <div class="wrapper">
-        <Header>
+        <Header1>
           <div class="container">
             <div class="text-center logo">
               {" "}
@@ -16,7 +17,7 @@ class MyAlert extends React.Component {
               </a>
             </div>
           </div>
-        </Header>
+        </Header1>
         {/*<!-- body-content -->*/}
         <div class="body-content clearfix">
           <div class="bg-color1">

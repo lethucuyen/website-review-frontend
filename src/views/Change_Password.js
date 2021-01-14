@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Header1 from "../components/HeaderWithIconPerson";
 class ChangePassword extends React.Component {
   render() {
     return (
       <div class="wrapper">
-        <Header>
+        <Header1>
           <div class="container">
             <div class="text-center logo">
               <a href="index.html">
@@ -15,7 +16,7 @@ class ChangePassword extends React.Component {
               </a>
             </div>
           </div>
-        </Header>
+        </Header1>
 
         {/*<!-- body-content -->*/}
         <div class="body-content clearfix">

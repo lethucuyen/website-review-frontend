@@ -32,7 +32,7 @@ function App() {
         <Route exact path="/job-details" component={JobDetails} />
         <Route exact path="/job-post-1" component={JobPost1} />
         <Route exact path="/job-post-2" component={JobPost2} />
-        <Route exact path="/my-alert" component={MyAlert} />
+        <Route exact path="/my-alerts" component={MyAlert} />
         <Route exact path="/my-notifications" component={MyNotifications} />
         <Route exact path="/resume-details" component={ResumeDetails} />
         <Route exact path="/resume-list" component={ResumeList} />
