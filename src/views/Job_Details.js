@@ -214,7 +214,7 @@ class JobDetails extends React.Component {
                 </div>
                 <div class="col-sm-6">
                   <div class="text-right">
-                    <a href="#">&laquo; Go back to job listings</a>
+                    <Link to="/job-list">&laquo; Go back to job listings</Link>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 //import "./App.css";
+import React, {useEffect, useState} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./views/Login";
 import Register from "./views/Register";
@@ -26,7 +27,20 @@ import EmployeeFollowing from "./views/Employee/Employee_Following";
 import EmployeeChangePassword from "./views/Employee/Employee_Change_Password";
 import EmployeeResume from "./views/Employee/Employee_Resume";
 import EmployeeReviews from "./views/Employee/Employee_Reviews";
-function App() {
+import { useSelector, useDispatch } from "react-redux";
+import authorizationActions from "./redux/actions/authorizationActions"
+
+const App = () => {
+  const authorizationReducer = useSelector((state) => state.authorizationReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(authorizationActions.setIsAuthenticatedAction(true));
+    }
+    else dispatch(authorizationActions.setIsAuthenticatedAction(false)); 
+  }, [localStorage])
+
   return (
     <Router>
       <Switch>
