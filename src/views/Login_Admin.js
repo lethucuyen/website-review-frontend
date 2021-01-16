@@ -2,11 +2,11 @@
 import React, { Component } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-class Login extends React.Component {
+class Login_Admin extends React.Component {
   render() {
     return (
       <div class="wrapper">
-        <Header></Header>
+        
 
         {/*<!-- body-content -->*/}
         <div class="body-content clearfix">
@@ -86,39 +86,10 @@ class Login extends React.Component {
                 </div>
               </div>
 
-              <div class="white-space-20"></div>
-              <div class="text-center color-white">
-                Not a member? &nbsp;{" "}
-                <a href="#" class="link-white">
-                  <strong>Create an account free</strong>
-                </a>
-              </div>
-              <div class="text-center color-white">
-                You are an admin? &nbsp;{" "}
-                <a href="/login-admin" class="link-white">
-                  <strong>Go to admin site</strong>
-                </a>
-              </div>
+              <div class="white-space-10"></div>
             </div>
           </div>
 
-          {/*<!-- box bottom -->*/}
-          <div class="block-section bg-color2">
-            <div class="container text-center">
-              <i class="fa fa-mobile-phone fa-5x box-icon"></i>
-              <h2 class=""> Find jobs with your phone</h2>
-
-              <p>Download the JobPlanet app from the</p>
-              <a href="#" class="btn btn-theme btn-default">
-                <i class="fa fa-android bordered-right dark"></i> Android
-              </a>
-              <span class="space-inline-10"></span>
-              <a href="#" class="btn btn-theme btn-default">
-                <i class="fa fa-apple bordered-right dark"></i> Iphone
-              </a>
-            </div>
-          </div>
-          {/*<!-- end box bottom -->*/}
 
           {/*<!-- modal forgot password -->*/}
           <div class="modal fade" id="myModal">
@@ -167,9 +138,8 @@ class Login extends React.Component {
         </div>
         {/*<!--end body-content -->*/}
 
-        <Footer></Footer>
       </div>
     );
   }
 }
-export default Login;
+export default Login_Admin;

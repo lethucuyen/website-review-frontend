@@ -1,7 +1,9 @@
 import logo from "./logo.svg";
 //import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./views/Login";
+//import LoginAdmin from "./views/Login_Admin";
+import LoginView from "./views/auth/LoginView";
 import Register from "./views/Register";
 import Home from "./views/Home";
 import JobList from "./views/Job-List";
@@ -27,6 +29,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
+        {/* <Route exact path="/login-admin" component={LoginAdmin} /> */}
+        <Route exact path="/login-admin" component={LoginView} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/job-list" component={JobList} />
         <Route exact path="/job-details" component={JobDetails} />
