@@ -2,7 +2,7 @@
 /* eslint-disable react/style-prop-object */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-class Header extends React.Component {
+class Header1 extends React.Component {
   render() {
     return (
       <header class="main-header">
@@ -91,17 +91,38 @@ class Header extends React.Component {
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li class="link-btn">
-                  <Link to="/login">
-                    <span class="btn btn-theme btn-pill btn-xs btn-line">
-                      Login
-                    </span>
-                  </Link>
+                <li class="dropdown">
+                  <a
+                    href="#"
+                    class="link-profile dropdown-toggle"
+                    data-toggle="dropdown"
+                  >
+                    <img
+                      src="assets/theme/images/people/4.jpg"
+                      alt=""
+                      class="img-profile"
+                    />{" "}
+                    &nbsp; Jhon <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <Link to="my-alerts"> My Alerts </Link>
+                    </li>
+                    <li>
+                      <Link to="my-notifications">
+                        {" "}
+                        Notifications <span class="badge ">5</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="change-password"> Change Password</Link>
+                    </li>
+                  </ul>
                 </li>
                 <li class="link-btn">
-                  <Link to="/register">
+                  <Link to="index">
                     <span class="btn btn-theme  btn-pill btn-xs btn-line">
-                      Register
+                      Logout
                     </span>
                   </Link>
                 </li>
@@ -221,4 +242,4 @@ class Header extends React.Component {
     );
   }
 }
-export default Header;
+export default Header1;

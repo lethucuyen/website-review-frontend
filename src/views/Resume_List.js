@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Header1 from "../components/HeaderWithIconPerson";
 class Resume_List extends React.Component {
   render() {
     return (
       <div class="wrapper">
-        <Header>
+        <Header1>
           {/*<!-- form search area-->*/}
           <div class="container">
             <div class="row">
@@ -188,7 +189,7 @@ class Resume_List extends React.Component {
             {/*<!-- end modal Advanced search -->*/}
           </div>
           {/*<!-- end form search area-->*/}
-        </Header>
+        </Header1>
 
         {/*<!-- body-content -->*/}
         <div class="body-content clearfix">
