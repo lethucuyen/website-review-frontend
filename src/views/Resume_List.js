@@ -228,10 +228,10 @@ class Resume_List extends React.Component {
                           </div>
                           <div class="col-md-11">
                             <h3 class="no-margin-top">
-                              <a href="resume_details.html" class="">
-                                Bryon Czoch{" "}
-                                <i class="fa fa-link color-white-mute font-1x"></i>
-                              </a>
+                              <Link to="/resume-details">
+                                  Bryon Czoch{" "}
+                                  <i class="fa fa-link color-white-mute font-1x"></i>
+                              </Link>
                             </h3>
                             <h5>
                               <span class="color-black">Chicago, IL</span>
