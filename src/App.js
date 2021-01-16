@@ -21,6 +21,11 @@ import ChangePassword from "./views/Change_Password";
 import CompanyPage from "./views/Company_Page";
 import Contact from "./views/Contact";
 import Error from "./views/Error_404";
+import EmployeeProfile from "./views/Employee/Employee_Profile";
+import EmployeeFollowing from "./views/Employee/Employee_Following";
+import EmployeeChangePassword from "./views/Employee/Employee_Change_Password";
+import EmployeeResume from "./views/Employee/Employee_Resume";
+import EmployeeReviews from "./views/Employee/Employee_Reviews";
 function App() {
   return (
     <Router>
@@ -45,6 +50,15 @@ function App() {
         <Route exact path="/company-page" component={CompanyPage} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/error-404" component={Error} />
+        <Route exact path="/employee-profile" component={EmployeeProfile} />
+        <Route exact path="/employee-following" component={EmployeeFollowing} />
+        <Route
+          exact
+          path="/employee-change-password"
+          component={EmployeeChangePassword}
+        />
+        <Route exact path="/employee-resume" component={EmployeeResume} />
+        <Route exact path="/employee-reviews" component={EmployeeReviews} />
       </Switch>
     </Router>
   );
