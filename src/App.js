@@ -1,9 +1,12 @@
 import logo from "./logo.svg";
 //import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+
 import Login from "./views/Login";
 //import LoginAdmin from "./views/Login_Admin";
-import LoginView from "./views/auth/LoginView";
+
+
 import Register from "./views/Register";
 import Home from "./views/Home";
 import JobList from "./views/Job-List";
@@ -23,14 +26,33 @@ import ChangePassword from "./views/Change_Password";
 import CompanyPage from "./views/Company_Page";
 import Contact from "./views/Contact";
 import Error from "./views/Error_404";
+
+//admin site
+import routes from '../src/routes';
+import { ThemeProvider } from '@material-ui/core';
+import GlobalStyles from './components/GlobalStyles';
+import './mixins/chartjs';
+import theme from './theme';
+import DashboardLayout from '../src/layouts/DashboardLayout';
+import MainLayout from '../src/layouts/MainLayout';
+import AccountView from '../src/views/account/AccountView';
+import CustomerListView from '../src/views/customer/CustomerListView';
+import DashboardView from '../src/views/reports/DashboardView';
+import LoginView from '../src/views/auth/LoginView';
+import NotFoundView from '../src/views/errors/NotFoundView';
+import ProductListView from '../src/views/product/ProductListView';
+import RegisterView from '../src/views/auth/RegisterView';
+import SettingsView from '../src/views/settings/SettingsView';
+
 function App() {
+  
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         {/* <Route exact path="/login-admin" component={LoginAdmin} /> */}
-        <Route exact path="/login-admin" component={LoginView} />
+        
         <Route exact path="/register" component={Register} />
         <Route exact path="/job-list" component={JobList} />
         <Route exact path="/job-details" component={JobDetails} />
@@ -49,6 +71,44 @@ function App() {
         <Route exact path="/company-page" component={CompanyPage} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/error-404" component={Error} />
+
+        {/*  
+        <Route exact path="/app-admin" component={DashboardLayout} />
+        <Route exact path="/app-admin/accounts" component={AccountView} />
+        <Route exact path="/app-admin/customers" component={CustomerListView} />
+        <Route exact path="/app-admin/dashboard" component={DashboardView} />
+        <Route exact path="/app-admin/products" component={ProductListView} />
+        <Route exact path="/app-admin/settings" component={SettingsView} />
+          */}
+       <Route
+          path="/app-admin"
+          render={({ match: { url } }) => (
+        <>
+          <Route path={`${url}/`} component={DashboardLayout}  />
+          <Route path={`${url}/accounts`} component={AccountView} />
+          <Route path={`${url}/customers`} component={CustomerListView} />
+          <Route path={`${url}/dashboard`} component={DashboardView} />
+          <Route path={`${url}/products`} component={ProductListView} />
+          <Route path={`${url}/settings`} component={SettingsView} />
+        </>
+          )}
+        />
+        {/*  
+        <Route exact path="/admin" component={MainLayout} />
+        <Route exact path="/admin/login" component={LoginView} />
+        <Route exact path="/admin/register" component={RegisterView} />
+          */}
+        <Route
+          path="/admin"
+          component={({ match: { url } }) => (
+        <>
+          <Route path={`${url}/`} component={MainLayout} exact />
+          <Route path={`${url}/login`} component={LoginView} />
+          <Route path={`${url}/register`} component={RegisterView} />
+        </>
+          )}
+        />
+
       </Switch>
     </Router>
   );

@@ -95,7 +95,7 @@ class Login extends React.Component {
               </div>
               <div class="text-center color-white">
                 You are an admin? &nbsp;{" "}
-                <a href="/login-admin" class="link-white">
+                <a href="/admin/login" class="link-white">
                   <strong>Go to admin site</strong>
                 </a>
               </div>

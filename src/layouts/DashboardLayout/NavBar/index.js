@@ -32,37 +32,37 @@ const user = {
 
 const items = [
   {
-    href: '/app/dashboard',
+    href: '/app-admin/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/app-admin/customers',
     icon: UsersIcon,
     title: 'Customers'
   },
   {
-    href: '/app/products',
+    href: '/app-admin/products',
     icon: ShoppingBagIcon,
     title: 'Products'
   },
   {
-    href: '/app/account',
+    href: '/app-admin/accounts',
     icon: UserIcon,
     title: 'Account'
   },
   {
-    href: '/app/settings',
+    href: '/app-admin/settings',
     icon: SettingsIcon,
     title: 'Settings'
   },
   {
-    href: '/login',
+    href: '/admin/login',
     icon: LockIcon,
     title: 'Login'
   },
   {
-    href: '/register',
+    href: '/admin/register',
     icon: UserPlusIcon,
     title: 'Register'
   },
