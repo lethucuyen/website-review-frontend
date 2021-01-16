@@ -120,11 +120,11 @@ class Header1 extends React.Component {
                   </ul>
                 </li>
                 <li class="link-btn">
-                  <Link to="index">
-                    <span class="btn btn-theme  btn-pill btn-xs btn-line">
+                  <a>
+                    <button class="btn btn-theme  btn-pill btn-xs btn-line" onClick={() => localStorage.removeItem("token")}>
                       Logout
-                    </span>
-                  </Link>
+                    </button>
+                  </a>
                 </li>
               </ul>
             </div>

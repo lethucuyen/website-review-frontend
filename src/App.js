@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 //import "./App.css";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./views/Login";
 import Register from "./views/Register";
@@ -31,6 +32,9 @@ import ClientHome from "./views/ClientHome";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
+import { useSelector, useDispatch } from "react-redux";
+import authorizationActions from "./redux/actions/authorizationActions"
+
 const THEME = createMuiTheme({
   typography: {
     "fontFamily": `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
@@ -41,44 +45,54 @@ const THEME = createMuiTheme({
   }
 });
 
-function App() {
+const App = () => {
+  const authorizationReducer = useSelector((state) => state.authorizationReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(authorizationActions.setIsAuthenticatedAction(true));
+    }
+    else dispatch(authorizationActions.setIsAuthenticatedAction(false));
+  }, [localStorage])
+
   return (
     <ThemeProvider theme={THEME}>
-        {/* <Router history={appHistory} routes={Routes} /> */}
-        <Router>
-          <Switch>
-            <Route exact path="/" component={ClientHome} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/job-list" component={JobList} />
-            <Route exact path="/job-details" component={JobDetails} />
-            <Route exact path="/job-post-1" component={JobPost1} />
-            <Route exact path="/job-post-2" component={JobPost2} />
-            <Route exact path="/my-alerts" component={MyAlert} />
-            <Route exact path="/my-notifications" component={MyNotifications} />
-            <Route exact path="/resume-details" component={ResumeDetails} />
-            <Route exact path="/resume-list" component={ResumeList} />
-            <Route exact path="/shortcode" component={Shortcode} />
-            <Route exact path="/terms-privacy" component={TermsPrivacy} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/blog" component={Blog} />
-            <Route exact path="/blog-single-post" component={BlogSinglePost} />
-            <Route exact path="/change-password" component={ChangePassword} />
-            <Route exact path="/company-page" component={CompanyPage} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/error-404" component={Error} />
-            <Route exact path="/employee-profile" component={EmployeeProfile} />
-            <Route exact path="/employee-following" component={EmployeeFollowing} />
-            <Route exact path="/client" component={ClientHome} />
-            <Route
-              exact
-              path="/employee-change-password"
-              component={EmployeeChangePassword}
-            />
-            <Route exact path="/employee-resume" component={EmployeeResume} />
-            <Route exact path="/employee-reviews" component={ClientHome} />
-          </Switch>
-        </Router>
+      {/* <Router history={appHistory} routes={Routes} /> */}
+      <Router>
+        <Switch>
+          <Route exact path="/" component={ClientHome} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/job-list" component={JobList} />
+          <Route exact path="/job-details" component={JobDetails} />
+          <Route exact path="/job-post-1" component={JobPost1} />
+          <Route exact path="/job-post-2" component={JobPost2} />
+          <Route exact path="/my-alerts" component={MyAlert} />
+          <Route exact path="/my-notifications" component={MyNotifications} />
+          <Route exact path="/resume-details" component={ResumeDetails} />
+          <Route exact path="/resume-list" component={ResumeList} />
+          <Route exact path="/shortcode" component={Shortcode} />
+          <Route exact path="/terms-privacy" component={TermsPrivacy} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/blog-single-post" component={BlogSinglePost} />
+          <Route exact path="/change-password" component={ChangePassword} />
+          <Route exact path="/company-page" component={CompanyPage} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/error-404" component={Error} />
+          <Route exact path="/employee-profile" component={EmployeeProfile} />
+          <Route exact path="/employee-following" component={EmployeeFollowing} />
+          <Route exact path="/client" component={ClientHome} />
+          <Route
+            exact
+            path="/employee-change-password"
+            component={EmployeeChangePassword}
+          />
+          <Route exact path="/employee-resume" component={EmployeeResume} />
+          <Route exact path="/employee-reviews" component={ClientHome} />
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }
