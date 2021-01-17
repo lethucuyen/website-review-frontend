@@ -29,20 +29,21 @@ import Error from "./views/Error_404";
 
 //admin site
 import routes from '../src/routes';
-import { ThemeProvider } from '@material-ui/core';
-import GlobalStyles from './components/GlobalStyles';
+
 import './mixins/chartjs';
 import theme from './theme';
 import DashboardLayout from '../src/layouts/DashboardLayout';
 import MainLayout from '../src/layouts/MainLayout';
 import AccountView from '../src/views/account/AccountView';
-import CustomerListView from '../src/views/customer/CustomerListView';
+import UserListView from '../src/views/customer/CustomerListView';
 import DashboardView from '../src/views/reports/DashboardView';
 import LoginView from '../src/views/auth/LoginView';
 import NotFoundView from '../src/views/errors/NotFoundView';
-import ProductListView from '../src/views/product/ProductListView';
+import CompanyListView from '../src/views/product/ProductListView';
 import RegisterView from '../src/views/auth/RegisterView';
 import SettingsView from '../src/views/settings/SettingsView';
+import { ThemeProvider } from '@material-ui/core';
+import GlobalStyles from '../src/components/GlobalStyles';
 
 function App() {
   
@@ -80,34 +81,39 @@ function App() {
         <Route exact path="/app-admin/products" component={ProductListView} />
         <Route exact path="/app-admin/settings" component={SettingsView} />
           */}
-       <Route
-          path="/app-admin"
-          render={({ match: { url } }) => (
-        <>
-          <Route path={`${url}/`} component={DashboardLayout}  />
-          <Route path={`${url}/accounts`} component={AccountView} />
-          <Route path={`${url}/customers`} component={CustomerListView} />
-          <Route path={`${url}/dashboard`} component={DashboardView} />
-          <Route path={`${url}/products`} component={ProductListView} />
-          <Route path={`${url}/settings`} component={SettingsView} />
-        </>
-          )}
-        />
-        {/*  
-        <Route exact path="/admin" component={MainLayout} />
-        <Route exact path="/admin/login" component={LoginView} />
-        <Route exact path="/admin/register" component={RegisterView} />
-          */}
+        <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Route
+            path="/app-admin"
+            render={({ match: { url } }) => (
+          <>
+            <Route path={`${url}/`} component={DashboardLayout} />
+            <Route path={`${url}/accounts`} component={AccountView} />
+            <Route path={`${url}/users`} component={UserListView} />
+            <Route path={`${url}/dashboard`} component={DashboardView} />
+            <Route path={`${url}/company`} component={CompanyListView} />
+            <Route path={`${url}/settings`} component={SettingsView} />
+          </>
+            )}
+          />
+
         <Route
           path="/admin"
           component={({ match: { url } }) => (
         <>
-          <Route path={`${url}/`} component={MainLayout} exact />
+          <Route path={`${url}/`} component={MainLayout}  />
           <Route path={`${url}/login`} component={LoginView} />
           <Route path={`${url}/register`} component={RegisterView} />
         </>
           )}
         />
+        </ThemeProvider>
+        {/*  
+        <Route exact path="/admin" component={MainLayout} />
+        <Route exact path="/admin/login" component={LoginView} />
+        <Route exact path="/admin/register" component={RegisterView} />
+          */}
+        
 
       </Switch>
     </Router>

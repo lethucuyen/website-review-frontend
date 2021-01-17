@@ -8,28 +8,30 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     display: 'flex',
-    height: '100%',
+    height: '10%',
     overflow: 'hidden',
-    width: '100%'
+    width: '0%'
   },
   wrapper: {
     display: 'flex',
     flex: '1 1 auto',
     overflow: 'hidden',
-    paddingTop: 64,
+    paddingTop: 0,
     [theme.breakpoints.up('lg')]: {
       paddingLeft: 256
-    }
+    },
   },
   contentContainer: {
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden'
+    overflow: 'hidden',
+   
   },
   content: {
     flex: '1 1 auto',
-    height: '100%',
-    overflow: 'auto'
+    height: '10%',
+    overflow: 'auto',
+
   }
 }));
 
@@ -47,8 +49,7 @@ const DashboardLayout = () => {
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
-            {/* <Outlet /> */}
-          </div>
+          </div> 
         </div>
       </div>
     </div>

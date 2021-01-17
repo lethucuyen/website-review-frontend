@@ -17,7 +17,7 @@ import {
   BarChart as BarChartIcon,
   Lock as LockIcon,
   Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
+  Home as HomeIcon,
   User as UserIcon,
   UserPlus as UserPlusIcon,
   Users as UsersIcon
@@ -37,14 +37,14 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/app-admin/customers',
+    href: '/app-admin/users',
     icon: UsersIcon,
-    title: 'Customers'
+    title: 'Users'
   },
   {
-    href: '/app-admin/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
+    href: '/app-admin/company',
+    icon: HomeIcon,
+    title: 'Company'
   },
   {
     href: '/app-admin/accounts',
@@ -57,19 +57,9 @@ const items = [
     title: 'Settings'
   },
   {
-    href: '/admin/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/admin/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
     href: '/404',
     icon: AlertCircleIcon,
-    title: 'Error'
+    title: 'Reports'
   }
 ];
 
@@ -151,33 +141,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         m={2}
         bgcolor="background.dark"
       >
-        <Typography
-          align="center"
-          gutterBottom
-          variant="h4"
-        >
-          Need more?
-        </Typography>
-        <Typography
-          align="center"
-          variant="body2"
-        >
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box
-          display="flex"
-          justifyContent="center"
-          mt={2}
-        >
-          <Button
-            color="primary"
-            component="a"
-            href="https://react-material-kit.devias.io"
-            variant="contained"
-          >
-            See PRO version
-          </Button>
-        </Box>
+        
+        
       </Box>
     </Box>
   );

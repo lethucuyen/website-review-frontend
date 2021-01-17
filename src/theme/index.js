@@ -20,6 +20,7 @@ const theme = createMuiTheme({
       secondary: colors.blueGrey[600]
     }
   },
+  width: '10%',
   shadows,
   typography
 });
