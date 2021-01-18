@@ -20,17 +20,17 @@ const useStyles = makeStyles((theme) => ({
 
 const UserListView = () => {
   const classes = useStyles();
-  const [customers] = useState(data);
+  const [users] = useState(data);
 
   return (
     <Page
       className={classes.root}
-      title="Customers"
+      title="Users"
     >
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results customers={customers} />
+          <Results users={users} />
         </Box>
       </Container>
     </Page>

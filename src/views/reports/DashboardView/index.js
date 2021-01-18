@@ -7,10 +7,10 @@ import {
 import Page from '../../../components/Page';
 import Budget from './Budget';
 import LatestOrders from './LatestOrders';
-import LatestProducts from './LatestProducts';
+import LatestCompany from './LatestCompany';
 import Sales from './Sales';
 import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
+import TotalUsers from './TotalUsers';
 import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalCustomers />
+            <TotalUsers />
           </Grid>
           <Grid
             item
@@ -97,7 +97,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <LatestProducts />
+            <LatestCompany />
           </Grid>
           <Grid
             item

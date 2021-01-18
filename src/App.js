@@ -28,18 +28,18 @@ import Contact from "./views/Contact";
 import Error from "./views/Error_404";
 
 //admin site
-import routes from '../src/routes';
+
 
 import './mixins/chartjs';
 import theme from './theme';
 import DashboardLayout from '../src/layouts/DashboardLayout';
 import MainLayout from '../src/layouts/MainLayout';
 import AccountView from '../src/views/account/AccountView';
-import UserListView from '../src/views/customer/CustomerListView';
+import UserListView from './views/user/UserListView';
 import DashboardView from '../src/views/reports/DashboardView';
 import LoginView from '../src/views/auth/LoginView';
 import NotFoundView from '../src/views/errors/NotFoundView';
-import CompanyListView from '../src/views/product/ProductListView';
+import CompanyListView from '../src/views/company/CompanyListView';
 import RegisterView from '../src/views/auth/RegisterView';
 import SettingsView from '../src/views/settings/SettingsView';
 import { ThemeProvider } from '@material-ui/core';

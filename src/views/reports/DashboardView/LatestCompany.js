@@ -23,31 +23,31 @@ const data = [
   {
     id: uuid(),
     name: 'Dropbox',
-    imageUrl: '/static/images/products/product_1.png',
+    imageUrl: '/static/images/companys/company_1.png',
     updatedAt: moment().subtract(2, 'hours')
   },
   {
     id: uuid(),
     name: 'Medium Corporation',
-    imageUrl: '/static/images/products/product_2.png',
+    imageUrl: '/static/images/company/company_2.png',
     updatedAt: moment().subtract(2, 'hours')
   },
   {
     id: uuid(),
     name: 'Slack',
-    imageUrl: '/static/images/products/product_3.png',
+    imageUrl: '/static/images/company/company_3.png',
     updatedAt: moment().subtract(3, 'hours')
   },
   {
     id: uuid(),
     name: 'Lyft',
-    imageUrl: '/static/images/products/product_4.png',
+    imageUrl: '/static/images/company/company_4.png',
     updatedAt: moment().subtract(5, 'hours')
   },
   {
     id: uuid(),
     name: 'GitHub',
-    imageUrl: '/static/images/products/product_5.png',
+    imageUrl: '/static/images/company/company_5.png',
     updatedAt: moment().subtract(9, 'hours')
   }
 ];
@@ -62,9 +62,9 @@ const useStyles = makeStyles(({
   }
 }));
 
-const LatestProducts = ({ className, ...rest }) => {
+const LatestCompany = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [products] = useState(data);
+  const [companys] = useState(data);
 
   return (
     <Card
@@ -72,26 +72,26 @@ const LatestProducts = ({ className, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        subtitle={`${products.length} in total`}
-        title="Latest Products"
+        subtitle={`${companys.length} in total`}
+        title="Latest companys"
       />
       <Divider />
       <List>
-        {products.map((product, i) => (
+        {companys.map((company, i) => (
           <ListItem
-            divider={i < products.length - 1}
-            key={product.id}
+            divider={i < companys.length - 1}
+            key={company.id}
           >
             <ListItemAvatar>
               <img
-                alt="Product"
+                alt="company"
                 className={classes.image}
-                src={product.imageUrl}
+                src={company.imageUrl}
               />
             </ListItemAvatar>
             <ListItemText
-              primary={product.name}
-              secondary={`Updated ${product.updatedAt.fromNow()}`}
+              primary={company.name}
+              secondary={`Updated ${company.updatedAt.fromNow()}`}
             />
             <IconButton
               edge="end"
@@ -121,8 +121,8 @@ const LatestProducts = ({ className, ...rest }) => {
   );
 };
 
-LatestProducts.propTypes = {
+LatestCompany.propTypes = {
   className: PropTypes.string
 };
 
-export default LatestProducts;
+export default LatestCompany;

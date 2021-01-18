@@ -8,7 +8,7 @@ import {
 import { Pagination } from '@material-ui/lab';
 import Page from '../../../components/Page';
 import Toolbar from './Toolbar';
-import ProductCard from './ProductCard';
+import CompanyCard from './CompanyCard';
 import data from './data';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,19 +18,19 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
   },
-  productCard: {
+  companyCard: {
     height: '100%'
   }
 }));
 
-const CompanyList = () => {
+const CompanyListView = () => {
   const classes = useStyles();
-  const [products] = useState(data);
+  const [companys] = useState(data);
 
   return (
     <Page
       className={classes.root}
-      title="Products"
+      title="Company"
     >
       <Container maxWidth={false}>
         <Toolbar />
@@ -39,17 +39,17 @@ const CompanyList = () => {
             container
             spacing={3}
           >
-            {products.map((product) => (
+            {companys.map((company) => (
               <Grid
                 item
-                key={product.id}
+                key={company.id}
                 lg={4}
                 md={6}
                 xs={12}
               >
-                <ProductCard
-                  className={classes.productCard}
-                  product={product}
+                <CompanyCard
+                  className={classes.companyCard}
+                  company={company}
                 />
               </Grid>
             ))}
@@ -71,4 +71,4 @@ const CompanyList = () => {
   );
 };
 
-export default CompanyList;
+export default CompanyListView;
