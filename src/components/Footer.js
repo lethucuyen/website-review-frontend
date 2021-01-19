@@ -5,11 +5,11 @@ import React, { Component } from "react";
 class Footer extends React.Component {
   render() {
     return (
-      <footer class="main-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <ul class="list-inline link-footer text-center-xs">
+      <footer className="main-footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-6">
+              <ul className="list-inline link-footer text-center-xs">
                 <li>
                   <a href="index.html">Home</a>
                 </li>
@@ -24,22 +24,22 @@ class Footer extends React.Component {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-6 ">
-              <p class="text-center-xs hidden-lg hidden-md hidden-sm">
+            <div className="col-sm-6 ">
+              <p className="text-center-xs hidden-lg hidden-md hidden-sm">
                 Stay Connect
               </p>
-              <div class="socials text-right text-center-xs">
+              <div className="socials text-right text-center-xs">
                 <a href="#">
-                  <i class="fa fa-facebook"></i>
+                  <i className="fa fa-facebook"></i>
                 </a>
                 <a href="#">
-                  <i class="fa fa-twitter"></i>
+                  <i className="fa fa-twitter"></i>
                 </a>
                 <a href="#">
-                  <i class="fa fa-youtube-play"></i>
+                  <i className="fa fa-youtube-play"></i>
                 </a>
                 <a href="#">
-                  <i class="fa fa-linkedin"></i>
+                  <i className="fa fa-linkedin"></i>
                 </a>
               </div>
             </div>

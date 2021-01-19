@@ -9,12 +9,7 @@ import CompanyListView from '../components/Home/CompanyListView'
 import NearestReviewListView from '../components/Home/NearestReviewListView'
 
 
-const useStyles = makeStyles(() => ({
-  card: {
-    minHeight: 500,
-  },
-
-}));
+const useStyles = makeStyles(() => ({}));
 
 
 const ClientHome = () => {

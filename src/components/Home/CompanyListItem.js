@@ -7,13 +7,12 @@ import {
   Card,
   CardActionArea,
   CardActions,
-  CardContent,
   CardMedia,
   Typography,
   Box,
   Divider,
 } from '@material-ui/core';
-import { Business, ArrowRight, Stars } from '@material-ui/icons';
+import { Business, ArrowRight } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -96,7 +95,7 @@ const CompanyListItem = ({ props }) => {
   const { cover, avatar, name, shortDescription, star, city, jobs, reviews, rated, onClick } = props;
 
   return (<Card className={classes.root}>
-    <Grid container lg direction="column" justify="flex-end">
+    <Grid container direction="column" justify="flex-end">
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia

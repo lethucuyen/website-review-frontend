@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { v4 as uuid } from "uuid";
 
 
 import {
@@ -96,8 +97,8 @@ const ReviewListItem = ({ props }) => {
         </Grid>
       </Grid>
       <Grid className={classes.starContent} item container>
-        {[...Array(star).fill(null)].map(item => <Grid className={classes.blueStar} item><img width="21" src="https://itviec.com/assets/rating-star-white-46c363f62de83d41bcb0f1aee2dc3894552879682f61bec88c7f2528e6cd4a60.svg" /></Grid>)}
-        {[...Array(5 - star).fill(null)].map(item => <Grid className={classes.greyStar} item><img width="21" src="https://itviec.com/assets/rating-star-white-46c363f62de83d41bcb0f1aee2dc3894552879682f61bec88c7f2528e6cd4a60.svg" /></Grid>)}
+        {[...Array(star).fill(null)].map(item => <Grid className={classes.blueStar} item key={uuid()}><img width="21" src="https://itviec.com/assets/rating-star-white-46c363f62de83d41bcb0f1aee2dc3894552879682f61bec88c7f2528e6cd4a60.svg" /></Grid>)}
+        {[...Array(5 - star).fill(null)].map(item => <Grid className={classes.greyStar} item key={uuid()}><img width="21" src="https://itviec.com/assets/rating-star-white-46c363f62de83d41bcb0f1aee2dc3894552879682f61bec88c7f2528e6cd4a60.svg" /></Grid>)}
       </Grid>
       <Box component="div" className={classes.customDescBox}>
         <Typography variant="body1" component="p">

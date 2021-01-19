@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { v4 as uuid } from "uuid";
 
 
 import {
@@ -64,12 +65,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     fontSize: "1.75rem",
   },
-  searchIcon: {
-    fontSize: "2.5rem",
-    width: "36px",
-    height: "36px",
-    marginLeft: "8px",
-  },
 }));
 
 
@@ -85,7 +80,7 @@ const BaseSelect = ({ textLabel, value, options, onChange }) => {
         onChange={onChange}
         input={<BootstrapInput />}
       >
-        {options.map(({ name, value }) => <option value={value}>{name}</option>)}
+        {options.map(({ name, value }) => <option key={uuid()} value={value}>{name}</option>)}
       </NativeSelect>
     </FormControl>
   );

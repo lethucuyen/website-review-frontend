@@ -63,7 +63,6 @@ const CompanyListView = () => {
       container
       direction="row"
       justify="flex-start"
-      alignItems="base-line"
       spacing={3}
       className={classes.filterBox}
     >

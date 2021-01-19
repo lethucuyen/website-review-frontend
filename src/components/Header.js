@@ -17,40 +17,40 @@ const Header = (props) => {
 
 
   return (
-    <header class="main-header">
+    <header className="main-header">
       {/*<!--  main navbar -->*/}
-      <nav class="navbar navbar-default main-navbar hidden-sm hidden-xs">
-        <div class="container">
+      <nav className="navbar navbar-default main-navbar hidden-sm hidden-xs">
+        <div className="container">
           <div
-            class="collapse navbar-collapse"
+            className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
           >
-            <ul class="nav navbar-nav">
-              <li class="">
+            <ul className="nav navbar-nav">
+              <li className="">
                 <Link to="job-list">
                   <strong>Find a Job</strong>
                 </Link>
               </li>
-              <li class="">
+              <li className="">
                 <Link to="resume-list">
                   <strong>Find Resumes</strong>
                 </Link>
               </li>
-              <li class="">
+              <li className="">
                 <Link to="job-post-1">
                   <strong>Post a Job</strong>
                 </Link>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <a
                   href="#"
-                  class="dropdown-toggle"
+                  className="dropdown-toggle"
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Pages <span class="caret"></span>
+                  Pages <span className="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
+                <ul className="dropdown-menu" role="menu">
                   <li>
                     <Link to="about">About Us</Link>
                   </li>
@@ -71,16 +71,16 @@ const Header = (props) => {
                   </li>
                 </ul>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <a
                   href="#"
-                  class="dropdown-toggle"
+                  className="dropdown-toggle"
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Features <span class="caret"></span>
+                  Features <span className="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
+                <ul className="dropdown-menu" role="menu">
                   <li>
                     <Link to="/job-list">Find a Job</Link>
                   </li>
@@ -102,19 +102,19 @@ const Header = (props) => {
                 </ul>
               </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul className="nav navbar-nav navbar-right">
               {!isAuthenticated &&
               <>
-                <li class="link-btn">
+                <li className="link-btn">
                   <Link to="/login">
-                    <span class="btn btn-theme btn-pill btn-xs btn-line">
+                    <span className="btn btn-theme btn-pill btn-xs btn-line">
                       Login
                     </span>
                   </Link>
                 </li>
-                <li class="link-btn">
+                <li className="link-btn">
                   <Link to="/register">
-                    <span class="btn btn-theme  btn-pill btn-xs btn-line">
+                    <span className="btn btn-theme  btn-pill btn-xs btn-line">
                       Register
                     </span>
                   </Link>
@@ -122,27 +122,27 @@ const Header = (props) => {
               </>}
               {isAuthenticated &&
                 <>
-                  <li class="dropdown">
+                  <li className="dropdown">
                   <a
                     href="#"
-                    class="link-profile dropdown-toggle"
+                    className="link-profile dropdown-toggle"
                     data-toggle="dropdown"
                   >
                     <img
                       src="assets/theme/images/people/4.jpg"
                       alt=""
-                      class="img-profile"
+                      className="img-profile"
                     />{" "}
-                    &nbsp; Jhon <b class="caret"></b>
+                    &nbsp; Jhon <b className="caret"></b>
                   </a>
-                  <ul class="dropdown-menu" role="menu">
+                  <ul className="dropdown-menu" role="menu">
                     <li>
                       <Link to="my-alerts"> My Alerts </Link>
                     </li>
                     <li>
                       <Link to="my-notifications">
                         {" "}
-                        Notifications <span class="badge ">5</span>
+                        Notifications <span className="badge ">5</span>
                       </Link>
                     </li>
                     <li>
@@ -150,9 +150,9 @@ const Header = (props) => {
                     </li>
                   </ul>
                 </li>
-                <li class="link-btn">
+                <li className="link-btn">
                   <a>
-                    <button class="btn btn-theme  btn-pill btn-xs btn-line" onClick={onLogOut}>
+                    <button className="btn btn-theme  btn-pill btn-xs btn-line" onClick={onLogOut}>
                       Logout
                     </button>
                   </a>
@@ -165,31 +165,31 @@ const Header = (props) => {
       {/*<!--  end main navbar -->*/}
 
       {/*<!--  mobile navbar -->*/}
-      <div class="container">
-        <nav class="mobile-nav hidden-md hidden-lg">
-          <a href="#" class="btn-nav-toogle first">
-            <span class="bars"></span>
+      <div className="container">
+        <nav className="mobile-nav hidden-md hidden-lg">
+          <a href="#" className="btn-nav-toogle first">
+            <span className="bars"></span>
             Menu
           </a>
-          <div class="mobile-nav-block">
+          <div className="mobile-nav-block">
             <h4>Navigation</h4>
-            <a href="#" class="btn-nav-toogle">
-              <span class="barsclose"></span>
+            <a href="#" className="btn-nav-toogle">
+              <span className="barsclose"></span>
               Close
             </a>
 
-            <ul class="nav navbar-nav">
-              <li class="">
+            <ul className="nav navbar-nav">
+              <li className="">
                 <Link to="/job-list">
                   <strong>Find a Job</strong>
                 </Link>
               </li>
-              <li class="">
+              <li className="">
                 <Link to="/resume-list">
                   <strong>Find Resumes</strong>
                 </Link>
               </li>
-              <li class="">
+              <li className="">
                 <Link to="/job-post-1">
                   <strong>Post a Job</strong>
                 </Link>
@@ -204,16 +204,16 @@ const Header = (props) => {
                   <strong>Register</strong>
                 </Link>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <a
                   href="#"
-                  class="dropdown-toggle"
+                  className="dropdown-toggle"
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Pages <span class="caret"></span>
+                  Pages <span className="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
+                <ul className="dropdown-menu" role="menu">
                   <li>
                     <Link to="/about">About Us</Link>
                   </li>
@@ -234,16 +234,16 @@ const Header = (props) => {
                   </li>
                 </ul>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <a
                   href="#"
-                  class="dropdown-toggle"
+                  className="dropdown-toggle"
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Features <span class="caret"></span>
+                  Features <span className="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
+                <ul className="dropdown-menu" role="menu">
                   <li>
                     <Link to="/job-list">Find a Job</Link>
                   </li>
