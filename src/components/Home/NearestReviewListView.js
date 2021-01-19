@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 const useStyles = makeStyles(() => ({
   paper: {
     backgroundColor: "white",
@@ -9,12 +10,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+
 const NearestReviewListView = () => {
   const classes = useStyles();
 
-  return <div className={classes.paper}>
+  return (<div className={classes.paper}>
     <h4 className="font-bold">Review mới nhất</h4>
-  </div>;
+  </div>);
 }
+
 
 export default NearestReviewListView;

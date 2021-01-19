@@ -1,16 +1,12 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 import {
-  Container,
-  Card,
+  Container, Typography,
 } from '@material-ui/core';
+import HomeSearchBox from './HomeSearchBox';
 
-import BaseSearchBox from '../../core/BaseSearchBox';
-
-/* import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button'; */
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -23,16 +19,18 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+
 const HomeSearchHeader = () => {
   const classes = useStyles();
 
-  return <div>
+  return (<div>
     <Container className={classes.card} maxWidth="lg">
       <h1 className="font-bold">13,403 reviews công ty IT hàng đầu</h1>
-      <h4>Review chế độ đãi ngộ, môi trường làm việc, chính sách OT… cái gì cũng có</h4>
-      <BaseSearchBox/>
+      <Typography variant="h5" gutterBottom color="textSecondary">Review chế độ đãi ngộ, môi trường làm việc, chính sách OT… cái gì cũng có</Typography>
+      <HomeSearchBox/>
     </Container>
-  </div>;
+  </div>);
 }
+
 
 export default HomeSearchHeader;

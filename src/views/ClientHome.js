@@ -1,13 +1,13 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-
-
 import HomeSearchHeader from '../components/Home/HomeSearchHeader'
 import CompanyListView from '../components/Home/CompanyListView'
 import NearestReviewListView from '../components/Home/NearestReviewListView'
+
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -16,9 +16,11 @@ const useStyles = makeStyles(() => ({
 
 }));
 
+
 const ClientHome = () => {
   const classes = useStyles();
-  return <div className="wrapper">
+  
+  return (<div className="wrapper">
     <Header />
     <div className="body-content clearfix">
       <div className="bg-color2">
@@ -36,7 +38,8 @@ const ClientHome = () => {
       </div>
     </div>
     <Footer />
-  </div>;
+  </div>);
 }
+
 
 export default ClientHome;
