@@ -7,6 +7,8 @@ import {
   Grid,
 } from '@material-ui/core';
 import BaseSelect from "../../common/BaseSelect";
+
+
 import CompanyListItem from "./CompanyListItem";
 
 
@@ -78,7 +80,6 @@ const CompanyListView = () => {
       {companies.map((item) => (
         <Grid item xs={4} key={uuid()}>
           <CompanyListItem props={{ ...item, onClick: goToCompany }} />
-          {/* <CompanyListItem props={item} /> */}
         </Grid>
       ))}
     </Grid>
