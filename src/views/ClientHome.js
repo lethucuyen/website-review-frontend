@@ -26,7 +26,6 @@ const ClientHome = () => {
   const retrieveCompanies = () => {
     CompanyService.getAll()
       .then(response => {
-        console.log(response.data.listCompany);
         setItems(response.data.listCompany || []);
       })
       .catch(e => {
@@ -34,20 +33,22 @@ const ClientHome = () => {
       });
   };
 
-  // const searchCompanies = (searchText) => {
-  //   CompanyService.findByTitle(searchText)
-  //     .then(response => {
-  //       console.log(response.result || []);
-  //       // setItems(response.data.listCompany || []);
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
-  // }
+  const searchCompanies = (searchText) => {
+    const postData = {
+      "key": searchText
+    };
 
-  const onSearch = ({ searchCompanies }) => {
-    console.log("searchText =", searchText);
-    // searchCompanies(searchCompanies);
+    CompanyService.findByTitle(postData)
+      .then(response => {
+        setItems(response.data.result || []);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  const onSearch = ({ searchText }) => {
+    searchCompanies(searchText);
   };
 
   return (<div className="wrapper">
