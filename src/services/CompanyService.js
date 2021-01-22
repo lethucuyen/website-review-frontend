@@ -1,7 +1,7 @@
 import http from "../http-common";
 
-const getAll = () => {
-  return http.get("/company/list-company");
+const getAll = (data = {}) => {
+  return http.post("/company/list-company", data);
 };
 
 export default {

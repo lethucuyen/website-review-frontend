@@ -15,19 +15,19 @@ const useStyles = makeStyles(() => ({
     marginTop: "12px",
     paddingLeft: "54px",
     paddingRight: "54px",
-    paddingTop:"8px",
+    paddingTop: "8px",
   }
 }));
 
 
-const HomeSearchHeader = () => {
+const HomeSearchHeader = ({ onSearch }) => {
   const classes = useStyles();
 
   return (<div>
     <Container className={classes.card} maxWidth="lg">
       <h1 className="font-bold">13,403 reviews công ty IT hàng đầu</h1>
       <Typography variant="h5" gutterBottom color="textSecondary">Review chế độ đãi ngộ, môi trường làm việc, chính sách OT… cái gì cũng có</Typography>
-      <HomeSearchBox/>
+      <HomeSearchBox handleSubmit={onSearch} />
     </Container>
   </div>);
 }

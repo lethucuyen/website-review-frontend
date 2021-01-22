@@ -68,13 +68,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const BaseSelect = ({ textLabel, value, options, onChange }) => {
+const BaseSelect = ({ name, textLabel, value, options, onChange }) => {
   const classes = useStyles();
 
   return (
     <FormControl className={classes.margin}>
       {textLabel ? <InputLabel htmlFor="demo-customized-select-native">{textLabel}</InputLabel> : <div/>}
       <NativeSelect
+        name={name}
         id="demo-customized-select-native"
         value={value}
         onChange={onChange}

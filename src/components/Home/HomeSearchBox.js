@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 
@@ -6,49 +6,12 @@ import {
   Button,
   Grid,
   InputBase,
-  FormControl,
-  NativeSelect,
-  InputAdornment,
 } from '@material-ui/core';
+
 
 import SearchIcon from '@material-ui/icons/Search';
 import BaseSelect from '../../common/BaseSelect';
 
-
-const BootstrapInput = withStyles((theme) => ({
-  root: {
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
-  },
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 26px 10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      borderRadius: 4,
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-}))(InputBase);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,15 +40,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const HomeSearchBox = () => {
+const HomeSearchBox = ({ handleSubmit }) => {
   const classes = useStyles();
 
-  const [city, setCity] = React.useState('');
+  // const [city, setCity] = React.useState('');
 
   const cityOptions = [{ name: "Hồ Chí Minh", value: 0 }, { name: "Hà Nội", value: 1 }, { name: "Đà Nẵng", value: 2 }, { name: "Tất cả", value: "" }];
-  
-  const onChangeSelectedCity = (event) => {
-    setCity(event.target.value);
+
+  // Init form data
+  const [formData, setFormData] = useState({ searchText: "", city: 0 });
+
+  // const onChangeSelectedCity = (event) => {
+  //   setCity(event.target.value);
+  // };
+
+  // Handle input change
+  const handleInputChange = (e) => {
+    console.log(e);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log("formData =", formData);
   };
 
   return (
@@ -101,21 +74,27 @@ const HomeSearchBox = () => {
         <form className={classes.form} noValidate className={classes.form}>
           <SearchIcon className={classes.searchIcon} />
           <InputBase
+            name="searchText"
             className={classes.input}
             placeholder="Nhập tên công ty..."
             inputProps={{ 'aria-label': 'search google maps' }}
+            onChange={handleInputChange}
           />
         </form>
       </Grid>
       <Grid item>
         <BaseSelect
-          value={city}
+          name="city"
+          value={formData.city}
           options={cityOptions}
-          onChange={onChangeSelectedCity}
+          onChange={handleInputChange}
         />
       </Grid>
       <Grid item>
-        <Button variant="contained" color="secondary">Xem Reviews</Button>
+        <Button variant="contained" color="secondary" onClick={(e) => {
+          e.preventDefault();
+          handleSubmit(formData);
+        }}>Xem Reviews</Button>
       </Grid>
     </Grid>
   );

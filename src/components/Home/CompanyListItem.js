@@ -98,8 +98,8 @@ const CompanyListItem = ({ props }) => {
     <Grid container direction="column" justify="flex-end">
       <Card className={classes.root}>
         <CardActionArea
-          onClick={(event) => {
-            event.preventDefault();
+          onClick={(e) => {
+            e.preventDefault();
             onClick();
            }}
         >
