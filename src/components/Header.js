@@ -30,8 +30,8 @@ const Header = (props) => {
                 </Link>
               </li>
               <li class="">
-                <Link to="resume-list">
-                  <strong>Find Resumes</strong>
+                <Link to="company-list">
+                  <strong>Companies</strong>
                 </Link>
               </li>
               <li class="">
@@ -86,7 +86,7 @@ const Header = (props) => {
                     <Link to="job-details">Job Details</Link>
                   </li>
                   <li>
-                    <Link to="resume-list">Find Resumes</Link>
+                    <Link to="company-list">Find Resumes</Link>
                   </li>
                   <li>
                     <Link to="resume-details">Resume Details</Link>
@@ -183,7 +183,7 @@ const Header = (props) => {
                 </Link>
               </li>
               <li class="">
-                <Link to="/resume-list">
+                <Link to="/company-list">
                   <strong>Find Resumes</strong>
                 </Link>
               </li>
@@ -249,7 +249,7 @@ const Header = (props) => {
                     <Link to="/job-details">Job Details</Link>
                   </li>
                   <li>
-                    <Link to="/resume-list">Find Resumes</Link>
+                    <Link to="/company-list">Find Resumes</Link>
                   </li>
                   <li>
                     <Link to="/resume-details">Resume Details</Link>

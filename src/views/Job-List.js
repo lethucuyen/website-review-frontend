@@ -1,52 +1,68 @@
 /* eslint-disable react/style-prop-object */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import apiMethods from "../http-client/api-methods";
 const JobList = () => {
-  const data = [
+  const datda = [
       {
         jobImage: "./assets/theme/images/company-logo/1.jpg",
-        jobTitle: "Backend Developer",
-        userName: "CollegeHummor",
-        place: "New York, NY 10011 (Chelsea area)",
+        name: "Backend Developer",
+        salary: "CollegeHummor",
+        address: "New York, NY 10011 (Chelsea area)",
         description: "Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework",
-        time: "16 hours ago"
+        dueDate: "16 hours ago"
       },
       {
         jobImage: "./assets/theme/images/company-logo/2.jpg",
-        jobTitle: "Software Developer/Analyst - Web Developer",
-        userName: "University of Texas at Austin",
-        place: "Austin, TX",
+        name: "Software Developer/Analyst - Web Developer",
+        salary: "University of Texas at Austin",
+        address: "Austin, TX",
         description: "Experience in an environment using a programming language such as PHP. To build and maintain websites for the College of Fine Arts",
-        time: "1 day ago"
+        dueDate: "1 day ago"
       },
       {
         jobImage: "./assets/theme/images/company-logo/3.jpg",
-        jobTitle: "Full Stack Web Developer, Internal Tools",
-        userName: "Krossover",
-        place: "New York, NY 10011 (Chelsea area)",
+        name: "Full Stack Web Developer, Internal Tools",
+        salary: "Krossover",
+        address: "New York, NY 10011 (Chelsea area)",
         description: "PHP and/or Java. Architect features with the development team. Krossover is looking for a Web Application Developer to join our team of smart developers",
-        time: "15 minutes ago"
+        dueDate: "15 minutes ago"
       },
       {
         jobImage: "./assets/theme/images/company-logo/4.jpg",
-        jobTitle: "Entry Level - Software Engineer",
-        userName: "Tektronix",
-        place: "Beaverton, OR",
+        name: "Entry Level - Software Engineer",
+        salary: "Tektronix",
+        address: "Beaverton, OR",
         description: "Experience with PHP, Python, Perl, Ruby, Node.js,REST. Entry Level - Software Engineer.",
-        time: "3 days ago"
+        dueDate: "3 days ago"
       },
       {
         jobImage: "./assets/theme/images/company-logo/5.jpg",
-        jobTitle: "PHP Engineer",
+        name: "PHP Engineer",
         rating: "2,983",
-        userName: "Shutterstock",
-        place: "New York, NY",
+        salary: "Shutterstock",
+        address: "New York, NY",
         description: "SQL and PHP. Experience with PHP Storm IDE preferred. Our client is growing their team and is in immediate need of a PHP Developer.",
-        time: "3 days ago"
+        dueDate: "3 days ago"
       },
   ];
+
+  const [ data, setData ] = useState([]);
+
+  const _getAllJobs = async () => {
+    await apiMethods.application.getAllJobs()
+      .then(result => result?.data?.result)
+      .then(result => {
+        setData(result);
+      })
+      .catch(error => console.log(error.response));
+  }
+
+  useEffect(() => {
+    _getAllJobs();
+  }, []);
 
   return (
     <div class="wrapper">
@@ -146,7 +162,7 @@ const JobList = () => {
                             <label>With the exact phrase</label>
                             <input
                               type="text"
-                              class="form-control "
+                              class="form-control"
                               name="text"
                             />
                           </div>
@@ -286,7 +302,7 @@ const JobList = () => {
                         <div class="col-md-1 hidden-sm hidden-xs">
                           <div class="img-item">
                             <img
-                              src={item.jobImage}
+                              src={`./assets/theme/images/company-logo/${index % 5 + 1}.jpg`}
                               alt=""
                             />
                           </div>
@@ -294,12 +310,12 @@ const JobList = () => {
                         <div class="col-md-11">
                           <h3 class="no-margin-top">
                             <Link to="/job-details">
-                              {item.jobTitle}{" "}
+                              {item.name}{" "}
                               <i class="fa fa-link color-white-mute font-1x"></i>
                             </Link>
                           </h3>
                           <h5>
-                            <span class="color-black">{item.userName} </span>
+                            <span class="color-black">{item.salary} </span>
                             <span class="rate">
                               <i class="fa fa-star"></i>
                               <i class="fa fa-star"></i>
@@ -310,7 +326,7 @@ const JobList = () => {
                             <a href="#">{item.rating} Reviews</a>-{" "}
                             <span class="color-white-mute">
                               {" "}
-                              {item.place}
+                              {item.address}
                             </span>
                           </h5>
                           <p class="text-truncate ">
@@ -319,7 +335,7 @@ const JobList = () => {
                             in immediate need of a PHP Developer.
                           </p>
                           <div>
-                            <span class="color-white-mute">{item.time}</span> -
+                            <span class="color-white-mute">{item.dueDate}</span> -
                             <a
                               href="#need-login"
                               data-toggle="modal"
