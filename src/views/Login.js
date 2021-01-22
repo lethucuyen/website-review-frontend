@@ -103,13 +103,21 @@ const Login = () => {
                 </div>
               </div>
             </div>
-
             <div class="white-space-20"></div>
             <div class="text-center color-white">
-              Not a member? &nbsp;{" "}
-              <a href="#" class="link-white">
-                <strong>Create an account free</strong>
-              </a>
+              <div class="white-space-20"></div>
+              <div class="text-center color-white">
+                Not a member? &nbsp;{" "}
+                <a href="#" class="link-white">
+                  <strong>Create an account free</strong>
+                </a>
+              </div>
+              <div class="text-center color-white">
+                You are an admin? &nbsp;{" "}
+                <a href="/admin/login" class="link-white">
+                  <strong>Go to admin site</strong>
+                </a>
+              </div>
             </div>
           </div>
         </div>

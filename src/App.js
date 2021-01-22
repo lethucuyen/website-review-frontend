@@ -1,8 +1,11 @@
 import logo from "./logo.svg";
 //import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Login from "./views/Login";
+//import LoginAdmin from "./views/Login_Admin";
+
+
 import Register from "./views/Register";
 import Home from "./views/Home";
 import JobList from "./views/Job-List";
@@ -36,6 +39,22 @@ import { ThemeProvider } from '@material-ui/styles';
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import actionCreators from "./redux/action-creators";
+
+//admin site
+
+import './mixins/chartjs';
+import theme from './theme';
+import DashboardLayout from '../src/layouts/DashboardLayout';
+import MainLayout from '../src/layouts/MainLayout';
+import AccountView from '../src/views/account/AccountView';
+import UserListView from './views/user/UserListView';
+import DashboardView from '../src/views/reports/DashboardView';
+import LoginView from '../src/views/auth/LoginView';
+import NotFoundView from '../src/views/errors/NotFoundView';
+import CompanyListView from '../src/views/company/CompanyListView';
+import RegisterView from '../src/views/auth/RegisterView';
+import SettingsView from '../src/views/settings/SettingsView';
+import GlobalStyles from '../src/components/GlobalStyles';
 
 const THEME = createMuiTheme({
   typography: {
@@ -107,6 +126,49 @@ const App = () => {
         />
         <Route exact path="/employee-resume" component={EmployeeResume} />
         <Route exact path="/employee-reviews" component={EmployeeReviews} />
+
+        {/*  
+        <Route exact path="/app-admin" component={DashboardLayout} />
+        <Route exact path="/app-admin/accounts" component={AccountView} />
+        <Route exact path="/app-admin/customers" component={CustomerListView} />
+        <Route exact path="/app-admin/dashboard" component={DashboardView} />
+        <Route exact path="/app-admin/products" component={ProductListView} />
+        <Route exact path="/app-admin/settings" component={SettingsView} />
+          */}
+        <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Route
+            path="/app-admin"
+            render={({ match: { url } }) => (
+          <>
+            <Route path={`${url}/`} component={DashboardLayout} />
+            <Route path={`${url}/accounts`} component={AccountView} />
+            <Route path={`${url}/users`} component={UserListView} />
+            <Route path={`${url}/dashboard`} component={DashboardView} />
+            <Route path={`${url}/company`} component={CompanyListView} />
+            <Route path={`${url}/settings`} component={SettingsView} />
+          </>
+            )}
+          />
+
+        <Route
+          path="/admin"
+          component={({ match: { url } }) => (
+        <>
+          <Route path={`${url}/`} component={MainLayout}  />
+          <Route path={`${url}/login`} component={LoginView} />
+          <Route path={`${url}/register`} component={RegisterView} />
+        </>
+          )}
+        />
+        </ThemeProvider>
+        {/*  
+        <Route exact path="/admin" component={MainLayout} />
+        <Route exact path="/admin/login" component={LoginView} />
+        <Route exact path="/admin/register" component={RegisterView} />
+          */}
+        
+
       </Switch>
     </Router>
   );
