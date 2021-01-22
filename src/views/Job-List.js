@@ -4,52 +4,52 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import apiMethods from "../http-client/api-methods";
-const JobList = () => {
+const JobList = ({ disabled = false }) => {
   const datda = [
-      {
-        jobImage: "./assets/theme/images/company-logo/1.jpg",
-        name: "Backend Developer",
-        salary: "CollegeHummor",
-        address: "New York, NY 10011 (Chelsea area)",
-        description: "Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework",
-        dueDate: "16 hours ago"
-      },
-      {
-        jobImage: "./assets/theme/images/company-logo/2.jpg",
-        name: "Software Developer/Analyst - Web Developer",
-        salary: "University of Texas at Austin",
-        address: "Austin, TX",
-        description: "Experience in an environment using a programming language such as PHP. To build and maintain websites for the College of Fine Arts",
-        dueDate: "1 day ago"
-      },
-      {
-        jobImage: "./assets/theme/images/company-logo/3.jpg",
-        name: "Full Stack Web Developer, Internal Tools",
-        salary: "Krossover",
-        address: "New York, NY 10011 (Chelsea area)",
-        description: "PHP and/or Java. Architect features with the development team. Krossover is looking for a Web Application Developer to join our team of smart developers",
-        dueDate: "15 minutes ago"
-      },
-      {
-        jobImage: "./assets/theme/images/company-logo/4.jpg",
-        name: "Entry Level - Software Engineer",
-        salary: "Tektronix",
-        address: "Beaverton, OR",
-        description: "Experience with PHP, Python, Perl, Ruby, Node.js,REST. Entry Level - Software Engineer.",
-        dueDate: "3 days ago"
-      },
-      {
-        jobImage: "./assets/theme/images/company-logo/5.jpg",
-        name: "PHP Engineer",
-        rating: "2,983",
-        salary: "Shutterstock",
-        address: "New York, NY",
-        description: "SQL and PHP. Experience with PHP Storm IDE preferred. Our client is growing their team and is in immediate need of a PHP Developer.",
-        dueDate: "3 days ago"
-      },
+    {
+      jobImage: "./assets/theme/images/company-logo/1.jpg",
+      name: "Backend Developer",
+      salary: "CollegeHummor",
+      address: "New York, NY 10011 (Chelsea area)",
+      description: "Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework",
+      dueDate: "16 hours ago"
+    },
+    {
+      jobImage: "./assets/theme/images/company-logo/2.jpg",
+      name: "Software Developer/Analyst - Web Developer",
+      salary: "University of Texas at Austin",
+      address: "Austin, TX",
+      description: "Experience in an environment using a programming language such as PHP. To build and maintain websites for the College of Fine Arts",
+      dueDate: "1 day ago"
+    },
+    {
+      jobImage: "./assets/theme/images/company-logo/3.jpg",
+      name: "Full Stack Web Developer, Internal Tools",
+      salary: "Krossover",
+      address: "New York, NY 10011 (Chelsea area)",
+      description: "PHP and/or Java. Architect features with the development team. Krossover is looking for a Web Application Developer to join our team of smart developers",
+      dueDate: "15 minutes ago"
+    },
+    {
+      jobImage: "./assets/theme/images/company-logo/4.jpg",
+      name: "Entry Level - Software Engineer",
+      salary: "Tektronix",
+      address: "Beaverton, OR",
+      description: "Experience with PHP, Python, Perl, Ruby, Node.js,REST. Entry Level - Software Engineer.",
+      dueDate: "3 days ago"
+    },
+    {
+      jobImage: "./assets/theme/images/company-logo/5.jpg",
+      name: "PHP Engineer",
+      rating: "2,983",
+      salary: "Shutterstock",
+      address: "New York, NY",
+      description: "SQL and PHP. Experience with PHP Storm IDE preferred. Our client is growing their team and is in immediate need of a PHP Developer.",
+      dueDate: "3 days ago"
+    },
   ];
 
-  const [ data, setData ] = useState([]);
+  const [data, setData] = useState([]);
 
   const _getAllJobs = async () => {
     await apiMethods.application.getAllJobs()
@@ -66,7 +66,7 @@ const JobList = () => {
 
   return (
     <div class="wrapper">
-      <Header
+      {!disabled ? <Header
         searchbox={
           //   <!-- form search area-->
           <div class="container">
@@ -268,10 +268,10 @@ const JobList = () => {
             {/* <!-- end modal forgot password --> */}
           </div>
         }
-      ></Header>
+      ></Header> : <div />}
       {/*<!-- body-content -->*/}
       <div class="body-content clearfix">
-        <div class="bg-color2">
+        <div>
           <div class="container">
             <div class="row">
               <div class="col-md-9">
@@ -295,73 +295,73 @@ const JobList = () => {
                   {/* <!-- item list -->   */}
                   <div class="box-list">
                     {/* <!-- item list --> */}
-                    { data.length && data.map((item, index) => {
+                    {data.length && data.map((item, index) => {
                       return (
                         <div class="item">
-                      <div class="row">
-                        <div class="col-md-1 hidden-sm hidden-xs">
-                          <div class="img-item">
-                            <img
-                              src={`./assets/theme/images/company-logo/${index % 5 + 1}.jpg`}
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-11">
-                          <h3 class="no-margin-top">
-                            <Link to="/job-details">
-                              {item.name}{" "}
-                              <i class="fa fa-link color-white-mute font-1x"></i>
-                            </Link>
-                          </h3>
-                          <h5>
-                            <span class="color-black">{item.salary} </span>
-                            <span class="rate">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star-half-o"></i>
-                            </span>
-                            <a href="#">{item.rating} Reviews</a>-{" "}
-                            <span class="color-white-mute">
-                              {" "}
-                              {item.address}
-                            </span>
-                          </h5>
-                          <p class="text-truncate ">
-                            SQL and PHP. Experience with PHP Storm IDE
-                            preferred. Our client is growing their team and is
-                            in immediate need of a PHP Developer.
+                          <div class="row">
+                            <div class="col-md-1 hidden-sm hidden-xs">
+                              <div class="img-item">
+                                <img
+                                  src={`./assets/theme/images/company-logo/${index % 5 + 1}.jpg`}
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-11">
+                              <h3 class="no-margin-top">
+                                <Link to="/job-details">
+                                  {item.name}{" "}
+                                  <i class="fa fa-link color-white-mute font-1x"></i>
+                                </Link>
+                              </h3>
+                              <h5>
+                                <span class="color-black">{item.salary} </span>
+                                <span class="rate">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-half-o"></i>
+                                </span>
+                                <a href="#">{item.rating} Reviews</a>-{" "}
+                                <span class="color-white-mute">
+                                  {" "}
+                                  {item.address}
+                                </span>
+                              </h5>
+                              <p class="text-truncate ">
+                                SQL and PHP. Experience with PHP Storm IDE
+                                preferred. Our client is growing their team and is
+                                in immediate need of a PHP Developer.
                           </p>
-                          <div>
-                            <span class="color-white-mute">{item.dueDate}</span> -
+                              <div>
+                                <span class="color-white-mute">{item.dueDate}</span> -
                             <a
-                              href="#need-login"
-                              data-toggle="modal"
-                              class="btn btn-xs btn-theme btn-default"
-                            >
-                              save job
+                                  href="#need-login"
+                                  data-toggle="modal"
+                                  class="btn btn-xs btn-theme btn-default"
+                                >
+                                  save job
                             </a>{" "}
                             -
                             <a
-                              href="#modal-email"
-                              data-toggle="modal"
-                              class="btn btn-theme btn-xs btn-default"
-                            >
-                              email
+                                  href="#modal-email"
+                                  data-toggle="modal"
+                                  class="btn btn-theme btn-xs btn-default"
+                                >
+                                  email
                             </a>{" "}
                             -
                             <a
-                              href="#"
-                              class="btn btn-theme btn-xs btn-default"
-                            >
-                              more ...
+                                  href="#"
+                                  class="btn btn-theme btn-xs btn-default"
+                                >
+                                  more ...
                             </a>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
                       )
                     })}
                     {/* <!-- end item list --> */}
@@ -706,7 +706,7 @@ const JobList = () => {
         {/* <!-- end modal  need login -->         */}
       </div>{" "}
       {/*<!--end body-content -->*/}
-      <Footer></Footer>
+      {!disabled ? <Footer></Footer> : <div />}
     </div>
   );
 }
