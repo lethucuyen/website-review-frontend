@@ -63,6 +63,7 @@ const THEME = createMuiTheme({
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
     "fontWeightMedium": 500,
+
   }
 });
 
@@ -95,37 +96,40 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={ClientHome} />
-        <Route exact path="/client-company" component={ClientCompany} />
-        <Route exact path="/login" component={isAuthenticated ? RedirectComponent : Login} />
-        <Route exact path="/register" component={isAuthenticated ? RedirectComponent : Register} />
-        <Route exact path="/job-list" component={JobList} />
-        <Route exact path="/job-details" component={JobDetails} />
-        <Route exact path="/job-post-1" component={JobPost1} />
-        <Route exact path="/job-post-2" component={JobPost2} />
-        <Route exact path="/my-alerts" component={MyAlert} />
-        <Route exact path="/my-notifications" component={MyNotifications} />
-        <Route exact path="/resume-details" component={ResumeDetails} />
-        <Route exact path="/company-list" component={CompanyList} />
-        <Route exact path="/shortcode" component={Shortcode} />
-        <Route exact path="/terms-privacy" component={TermsPrivacy} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/blog" component={Blog} />
-        <Route exact path="/blog-single-post" component={BlogSinglePost} />
-        <Route exact path="/change-password" component={ChangePassword} />
-        <Route exact path="/company-page" component={CompanyPage} />
-        <Route path="/company-page/:id" component={CompanyPage} />
-        <Route exact path="/contact" component={Contact} />
-        <Route exact path="/error-404" component={Error} />
-        <Route exact path="/employee-profile" component={EmployeeProfile} />
-        <Route exact path="/employee-following" component={EmployeeFollowing} />
-        <Route
-          exact
-          path="/employee-change-password"
-          component={EmployeeChangePassword}
-        />
-        <Route exact path="/employee-resume" component={EmployeeResume} />
-        <Route exact path="/employee-reviews" component={EmployeeReviews} />
+        <ThemeProvider theme={THEME}>
+          <Route exact path="/" component={ClientHome} />
+          <Route exact path="/client-company" component={ClientCompany} />
+          <Route exact path="/login" component={isAuthenticated ? RedirectComponent : Login} />
+          <Route exact path="/register" component={isAuthenticated ? RedirectComponent : Register} />
+          <Route exact path="/job-list" component={JobList} />
+          <Route exact path="/job-details" component={JobDetails} />
+          <Route exact path="/job-post-1" component={JobPost1} />
+          <Route exact path="/job-post-2" component={JobPost2} />
+          <Route exact path="/my-alerts" component={MyAlert} />
+          <Route exact path="/my-notifications" component={MyNotifications} />
+          <Route exact path="/resume-details" component={ResumeDetails} />
+          <Route exact path="/company-list" component={CompanyList} />
+          <Route exact path="/shortcode" component={Shortcode} />
+          <Route exact path="/terms-privacy" component={TermsPrivacy} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/blog-single-post" component={BlogSinglePost} />
+          <Route exact path="/change-password" component={ChangePassword} />
+          <Route exact path="/company-page" component={CompanyPage} />
+          <Route path="/company-page/:id" component={CompanyPage} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/error-404" component={Error} />
+          <Route exact path="/employee-profile" component={EmployeeProfile} />
+          <Route exact path="/employee-following" component={EmployeeFollowing} />
+          <Route
+            exact
+            path="/employee-change-password"
+            component={EmployeeChangePassword}
+          />
+          <Route exact path="/employee-resume" component={EmployeeResume} />
+          <Route exact path="/employee-reviews" component={EmployeeReviews} />
+        </ThemeProvider>
+
 
         {/*  
         <Route exact path="/app-admin" component={DashboardLayout} />
@@ -136,38 +140,38 @@ const App = () => {
         <Route exact path="/app-admin/settings" component={SettingsView} />
           */}
         <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Route
+          <GlobalStyles />
+          <Route
             path="/app-admin"
             render={({ match: { url } }) => (
-          <>
-            <Route path={`${url}/`} component={DashboardLayout} />
-            <Route path={`${url}/accounts`} component={AccountView} />
-            <Route path={`${url}/users`} component={UserListView} />
-            <Route path={`${url}/dashboard`} component={DashboardView} />
-            <Route path={`${url}/company`} component={CompanyListView} />
-            <Route path={`${url}/settings`} component={SettingsView} />
-          </>
+              <>
+                <Route path={`${url}/`} component={DashboardLayout} />
+                <Route path={`${url}/accounts`} component={AccountView} />
+                <Route path={`${url}/users`} component={UserListView} />
+                <Route path={`${url}/dashboard`} component={DashboardView} />
+                <Route path={`${url}/company`} component={CompanyListView} />
+                <Route path={`${url}/settings`} component={SettingsView} />
+              </>
             )}
           />
 
-        <Route
-          path="/admin"
-          component={({ match: { url } }) => (
-        <>
-          <Route path={`${url}/`} component={MainLayout}  />
-          <Route path={`${url}/login`} component={LoginView} />
-          <Route path={`${url}/register`} component={RegisterView} />
-        </>
-          )}
-        />
+          <Route
+            path="/admin"
+            component={({ match: { url } }) => (
+              <>
+                <Route path={`${url}/`} component={MainLayout} />
+                <Route path={`${url}/login`} component={LoginView} />
+                <Route path={`${url}/register`} component={RegisterView} />
+              </>
+            )}
+          />
         </ThemeProvider>
         {/*  
         <Route exact path="/admin" component={MainLayout} />
         <Route exact path="/admin/login" component={LoginView} />
         <Route exact path="/admin/register" component={RegisterView} />
           */}
-        
+
 
       </Switch>
     </Router>
