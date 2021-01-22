@@ -1,12 +1,33 @@
 /* eslint-disable react/style-prop-object */
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-class CompanyPage extends React.Component {
-  render() {
-    return (
-      <div class="wrapper">
+import { useParams } from "react-router-dom"
+import apiMethods from "../http-client/api-methods";
+import RatingStarBox from "./RatingStarBox";
+
+const CompanyPage = (props) => { 
+  const { id } = props.match.params;
+  const [ companyDetails, setCompanyDetails ] = useState({});
+
+  const _getCompanyDetails = async () => {
+    await apiMethods.application.getSingleCompanyDetail(id)
+      .then(result => result.data.result)
+      .then(result => {
+        console.log(result);
+        setCompanyDetails(result);
+      })
+      .catch(error => {
+      });
+  }
+  
+  useEffect(() => {
+    _getCompanyDetails()
+  }, [props.match.params]);
+
+  return (
+    <div class="wrapper">
         <Header>
           {" "}
           {/*<!-- form search area-->*/}
@@ -204,17 +225,17 @@ class CompanyPage extends React.Component {
         </Header>
 
         {/*<!-- body-content -->*/}
-        <div class="body-content clearfix">
+        { companyDetails?.id && <div class="body-content clearfix">
           {/*<!-- top link -->*/}
           <div class="bg-color2 block-section-xs line-bottom">
             <div class="container">
               <div class="row">
                 <div class="col-sm-6 hidden-xs">
-                  <div>Company profile :</div>
+                  <div>Company profile: {companyDetails.name}</div>
                 </div>
                 <div class="col-sm-6">
                   <div class="text-right">
-                    <a href="#">&laquo; Go back to job listings</a>
+                    <a href="#">&laquo; Go back to company listings</a>
                   </div>
                 </div>
               </div>
@@ -232,10 +253,7 @@ class CompanyPage extends React.Component {
                     <div class="row">
                       <div class="col-md-8">
                         <a href="company_page.html">
-                          <img
-                            src="./assets/theme/images/patner/4.png"
-                            alt=""
-                          />
+                          {companyDetails.name}
                         </a>
                       </div>
                       <div class="col-md-4">
@@ -252,8 +270,7 @@ class CompanyPage extends React.Component {
                     </h3>
 
                     <p>
-                      For over 50 years, Our Company has been a leader in the
-                      global IT industry.{" "}
+                      {companyDetails.description}{" "}
                     </p>
                     <p>
                       Early on, we were instrumental in the rise of the U.S.
@@ -261,31 +278,6 @@ class CompanyPage extends React.Component {
                       networks, the use of complex databases to consolidate
                       credit information, and we were the first software firm to
                       be listed on the New York Stock Exchange.{" "}
-                    </p>
-                    <p>
-                      More recently we invented the concept of business process
-                      reengineering, implemented the first airport ground
-                      traffic system, pioneered the strategic use of IT
-                      outsourcing by the world’s leading businesses, and led the
-                      first major public sector cloud computing project.{" "}
-                    </p>
-                    <p>
-                      Currently, Our Company employs 91,000 professionals in 90
-                      countries and is listed as a Fortune "World's Most Admired
-                      Company," ranking in the Top 4 of IT services providers
-                      (2011) for the second consecutive year.
-                    </p>
-                    <p>
-                      Our Company offers challenging professional opportunities
-                      that will draw on your skills and allow you to identify
-                      and achieve your career goals in a supportive environment.
-                      Our Company also offers many avenues to mastering your
-                      chosen profession - with exciting work assignments,
-                      training opportunities and exposure to new business ideas,
-                      knowledge and people. At Our Company, you can have a voice
-                      in your job, take control of your career path and
-                      contribute to the company's overall operation and growth.
-                      Count on us for excellent career opportunities.
                     </p>
 
                     {/*<!-- Reviews list-->*/}
@@ -298,7 +290,7 @@ class CompanyPage extends React.Component {
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-half-o"></i>
                       </span>
-                      <small>(1390)</small>
+                      <small>({companyDetails.listReviews?.length})</small>
                     </h3>
                     <h4>Company Attributes</h4>
                     <div class="row">
@@ -359,74 +351,22 @@ class CompanyPage extends React.Component {
                     </div>
 
                     <h4>List Reviews</h4>
-                    <div class="mt-20">
-                      <h5>
-                        <span class="rate">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-o"></i>
-                        </span>{" "}
-                        Productive and fun workplace.
-                      </h5>
-                      <p>
-                        Customer Service Specialist (Current Employee),
-                        Nashville, TN – February 21, 2015
-                      </p>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <p>
-                            <strong>Pros</strong>: free lunches, overtime,
-                            benefits, and good work hours
-                          </p>
-                        </div>
-                        <div class="col-sm-6">
-                          <p>
-                            {" "}
-                            <strong>Cons</strong>: sit down at desk for long
-                            periods of time, job security
-                          </p>
-                        </div>
-                      </div>
-                      <p>
-                        A typical day at work is to come in and log on to the
-                        computer and log in to the phone system. Open all
-                        necessary applications to service the incoming calls. I
-                        learned a lot about fixed annuities, it is still a daily
-                        learning process. The management has genuine care for
-                        the employees.My co-workers are all friendly and easy to
-                        work with. The hardest part of the job is finding the
-                        correct information to provide to the customers, I want
-                        to be as informative and accurate as possible. The most
-                        enjoyable part of the job is interacting with the
-                        customers and making them feel comfortable with speaking
-                        to me about their questions and concerns.
-                      </p>
-                    </div>
-                    <div class="mt-20">
-                      <h5>
-                        <span class="rate">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </span>{" "}
-                        Getting paid to have fun.
-                      </h5>
-                      <p>
-                        Unarmed Security Guard (Former Employee), Nashville, TN
-                        – February 22, 2015
-                      </p>
-                      <p>
-                        This was my favorite job so far. I got to watch some of
-                        my favorite bands while getting paid for it! Also, I was
-                        taught to handle some difficult situations with
-                        intoxicated and unruly people. This is has given me more
-                        experience with customer service!
-                      </p>
-                    </div>
+                    {
+                      companyDetails?.listReviews?.length > 0 && 
+                      <>
+                        {companyDetails?.listReviews.map((item, index) => 
+                          (<div class="mt-20">
+                            <h5>
+                              <RatingStarBox StarPoint={item.rating} /> {" "}
+                              {item.content}
+                            </h5>
+                            <p>
+                              <strong>By</strong>: {item.employeeId}
+                            </p>
+                        </div>))
+                        }
+                      </>
+                    }
                     <p>
                       <a
                         href="#"
@@ -549,44 +489,25 @@ class CompanyPage extends React.Component {
 
                     {/*<!-- jobs list-->*/}
                     <h3 class="title" id="cp-jobs">
-                      jobs <small>(303)</small>
+                      jobs <small>({companyDetails?.listJobs?.length})</small>
                     </h3>
-                    <div class="mt-20">
-                      <h4>
-                        <a href="job_details.html" class="">
-                          PHP Engineer{" "}
-                          <i class="fa fa-link color-white-mute font-1x"></i>
-                        </a>
-                      </h4>
-                      <p>Oak Ridge, TN</p>
-                    </div>
-                    <div class="mt-20">
-                      <h4>
-                        <a href="job_details.html" class="">
-                          Software Developer/Analyst - Web Developer{" "}
-                          <i class="fa fa-link color-white-mute font-1x"></i>
-                        </a>
-                      </h4>
-                      <p>Baton Rouge, LA</p>
-                    </div>
-                    <div class="mt-20">
-                      <h4>
-                        <a href="job_details.html" class="">
-                          Full Stack Web Developer, Internal Tools{" "}
-                          <i class="fa fa-link color-white-mute font-1x"></i>
-                        </a>
-                      </h4>
-                      <p>Macon, GA</p>
-                    </div>
-                    <div class="mt-20">
-                      <h4>
-                        <a href="job_details.html" class="">
-                          Entry Level - Software Engineer{" "}
-                          <i class="fa fa-link color-white-mute font-1x"></i>
-                        </a>
-                      </h4>
-                      <p>Mobile, AL</p>
-                    </div>
+                    {
+                      companyDetails?.listJobs && 
+                      companyDetails?.listJobs.map((item, index) => {
+                        return (
+                          <div class="mt-20">
+                            <h4>
+                              <Link to="/job-details">
+                                {item.name}{" "}
+                                <i class="fa fa-link color-white-mute font-1x"></i>
+                              </Link>
+                            </h4>
+                            <p>{item.address} - {item.salary}</p>
+                          </div>
+                        )
+                      })
+                    }
+                
                     <p>
                       <a
                         href="#"
@@ -759,10 +680,10 @@ class CompanyPage extends React.Component {
           </div>
           {/*<!-- end modal  apply -->*/}
         </div>
+        }
         {/*<!--end body-content -->*/}
         <Footer />
       </div>
-    );
-  }
+  );
 }
 export default CompanyPage;

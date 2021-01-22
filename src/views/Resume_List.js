@@ -4,9 +4,26 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Header1 from "../components/HeaderWithIconPerson";
+import apiMethods from "../http-client/api-methods";
 
 
-const Resume_List = () => {
+const Company_List = () => {
+
+  const [ data, setData ] = useState([]);
+
+  const _getAllCompanies = async () => {
+    await apiMethods.application.getAllCompanies()
+      .then(result => result?.data)
+      .then(result => {
+        setData(result.listCompany);
+        console.log(result.listCompany);
+      })
+      .catch(error => console.log(error.response));
+  }
+
+  useEffect(() => {
+    _getAllCompanies();
+  }, []);
   
   const SearchComponent = () => (<div>
     <div class="container">
@@ -207,20 +224,22 @@ const Resume_List = () => {
                     <div class="col-sm-6 ">
                       <p>
                         <strong class="color-black">
-                          PHP resumes in United States
+                          All companies in United States
                         </strong>
                       </p>
                     </div>
                     <div class="col-sm-6">
-                      <p class="text-right">Jobs 1 to 10 of 578</p>
+                      <p class="text-right">Companies 1 to 10 of {data?.length}</p>
                     </div>
                   </div>
                   {/*<!-- end top desc -->*/}
 
                   {/*<!-- listing -->*/}
                   <div class="box-list">
-                    {/*<!-- item listing  -->*/}
-                    <div class="item">
+                    {
+                      data.map((item, index) => {
+                        return (
+                          <div class="item">
                       <div class="row">
                         <div class="col-md-1 hidden-sm hidden-xs">
                           <div class="img-item">
@@ -232,247 +251,41 @@ const Resume_List = () => {
                         </div>
                         <div class="col-md-11">
                           <h3 class="no-margin-top">
-                            <Link to="/resume-details">
-                                Bryon Czoch{" "}
+                            <Link to={`/company-page/${item.id}`}>
+                                {item.name}{" "}
                                 <i class="fa fa-link color-white-mute font-1x"></i>
                             </Link>
                           </h3>
                           <h5>
-                            <span class="color-black">Chicago, IL</span>
+                            <span class="color-black">{item.address}</span>
                           </h5>
                           <p>
-                            PHP Developer -{" "}
+                            Uploaded by -{" "}
                             <span class="color-white-mute">
-                              Barcode Giant{" "}
+                              {item.username}{" "}
                             </span>{" "}
                             <br />
-                            Programmer/Analyst II -{" "}
+                            Email: -{" "}
                             <span class="color-white-mute">
-                              University of Chicago
+                              {item.email}
                             </span>
                             <br />
-                            Indiana University, Bachelor
+                            {item.description}
                           </p>
                           <div>
-                            <span class="color-white-mute">
-                              Updated: Feb 19
-                            </span>{" "}
-                            -
                             <a
                               href="#"
                               class="btn btn-xs btn-theme btn-default"
                             >
-                              save resume
+                              save company
                             </a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    {/*<!-- end item listing  -->*/}
-
-                    {/*<!-- item listing  -->*/}
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-md-1 hidden-sm hidden-xs">
-                          <div class="img-item">
-                            <img
-                              src="./assets/theme/images/people/2.jpg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-11">
-                          <h3 class="no-margin-top">
-                            <a href="resume_details.html" class="">
-                              Kinjal Gavadiya{" "}
-                              <i class="fa fa-link color-white-mute font-1x"></i>
-                            </a>
-                          </h3>
-                          <h5>
-                            <span class="color-black">San Jose, CA</span>{" "}
-                          </h5>
-                          <p>
-                            PHP Developer -{" "}
-                            <span class="color-white-mute">
-                              Barcode Giant{" "}
-                            </span>{" "}
-                            <br />
-                            Programmer/Analyst II -{" "}
-                            <span class="color-white-mute">
-                              University of Chicago
-                            </span>
-                            <br />
-                            Indiana University, Bachelor
-                          </p>
-                          <div>
-                            <span class="color-white-mute">
-                              Updated: Feb 10
-                            </span>{" "}
-                            -
-                            <a
-                              href="#"
-                              class="btn btn-xs btn-theme btn-default"
-                            >
-                              save resume
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/*<!-- end item listing  -->*/}
-
-                    {/*<!-- item listing  -->*/}
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-md-1 hidden-sm hidden-xs">
-                          <div class="img-item">
-                            <img
-                              src="./assets/theme/images/people/3.jpg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-11">
-                          <h3 class="no-margin-top">
-                            <a href="resume_details.html" class="">
-                              Shivakumar Gudimalla{" "}
-                              <i class="fa fa-link color-white-mute font-1x"></i>
-                            </a>
-                          </h3>
-                          <h5>
-                            <span class="color-black">Conway, AR</span>
-                          </h5>
-                          <p>
-                            PHP Developer -{" "}
-                            <span class="color-white-mute">
-                              Barcode Giant{" "}
-                            </span>{" "}
-                            <br />
-                            Programmer/Analyst II -{" "}
-                            <span class="color-white-mute">
-                              University of Chicago
-                            </span>
-                            <br />
-                            Indiana University, Bachelor
-                          </p>
-                          <div>
-                            <span class="color-white-mute">
-                              Updated: Feb 12
-                            </span>{" "}
-                            -
-                            <a
-                              href="#"
-                              class="btn btn-xs btn-theme btn-default"
-                            >
-                              save resume
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/*<!-- end item listing  -->*/}
-
-                    {/*<!-- item listing  -->*/}
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-md-1 hidden-sm hidden-xs">
-                          <div class="img-item">
-                            <img
-                              src="./assets/theme/images/people/4.jpg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-11">
-                          <h3 class="no-margin-top">
-                            <a href="resume_details.html" class="">
-                              Dhaval Patel{" "}
-                              <i class="fa fa-link color-white-mute font-1x"></i>
-                            </a>
-                          </h3>
-                          <h5>
-                            <span class="color-black">Las Vegas, NV </span>{" "}
-                          </h5>
-                          <p>
-                            PHP Developer -{" "}
-                            <span class="color-white-mute">
-                              Barcode Giant{" "}
-                            </span>{" "}
-                            <br />
-                            Programmer/Analyst II -{" "}
-                            <span class="color-white-mute">
-                              University of Chicago
-                            </span>
-                            <br />
-                            Indiana University, Bachelor
-                          </p>
-                          <div>
-                            <span class="color-white-mute">
-                              Updated: Feb 22
-                            </span>{" "}
-                            -
-                            <a
-                              href="#"
-                              class="btn btn-xs btn-theme btn-default"
-                            >
-                              save resume
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/*<!-- end item listing  -->*/}
-
-                    {/*<!-- item listing  -->*/}
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-md-1 hidden-sm hidden-xs">
-                          <div class="img-item">
-                            <img
-                              src="./assets/theme/images/people/5.jpg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-11">
-                          <h3 class="no-margin-top">
-                            <a href="resume_details.html" class="">
-                              Mike Zaloznyy{" "}
-                              <i class="fa fa-link color-white-mute font-1x"></i>
-                            </a>
-                          </h3>
-                          <h5>
-                            <span class="color-black">Raleigh, NC </span>{" "}
-                          </h5>
-                          <p>
-                            PHP Developer -{" "}
-                            <span class="color-white-mute">
-                              Barcode Giant{" "}
-                            </span>{" "}
-                            <br />
-                            Programmer/Analyst II -{" "}
-                            <span class="color-white-mute">
-                              University of Chicago
-                            </span>
-                            <br />
-                            Indiana University, Bachelor
-                          </p>
-                          <div>
-                            <span class="color-white-mute">
-                              Updated: Feb 1
-                            </span>{" "}
-                            -
-                            <a
-                              href="#"
-                              class="btn btn-xs btn-theme btn-default"
-                            >
-                              save resume
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/*<!-- end item listing  -->*/}
+                        )
+                      })
+                    }
                   </div>
                   {/*<!-- end  listing -->*/}
 
@@ -820,4 +633,4 @@ const Resume_List = () => {
     </div>
   );
 }
-export default Resume_List;
+export default Company_List;

@@ -86,7 +86,7 @@ const Header = (props) => {
                     <Link to="job-details">Job Details</Link>
                   </li>
                   <li>
-                    <Link to="resume-list">Find Resumes</Link>
+                    <Link to="company-list">Find Resumes</Link>
                   </li>
                   <li>
                     <Link to="resume-details">Resume Details</Link>
@@ -249,7 +249,7 @@ const Header = (props) => {
                     <Link to="/job-details">Job Details</Link>
                   </li>
                   <li>
-                    <Link to="/resume-list">Find Resumes</Link>
+                    <Link to="/company-list">Find Resumes</Link>
                   </li>
                   <li>
                     <Link to="/resume-details">Resume Details</Link>

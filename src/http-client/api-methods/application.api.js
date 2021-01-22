@@ -1,35 +1,34 @@
 import httpClient from '../config/http-client';
 
-const userRegister = (name, username, password, email, phone) => {
+const getAllCompanies = () => {
     return httpClient
-        .post('/employee/register', { name, username, password, email, phone })
+        .post('/company/list-company')
         .then((result) => {
             return Promise.resolve(result);
         })
         .catch((err) => Promise.reject(err));
 };
 
-const userLogin = (email, password) => {
+const getSingleCompanyDetail = (companyId) => {
     return httpClient
-        .post('/employee/login', { username: email, password })
+        .post(`/company/details-company/`, {companyId})
         .then((result) => {
             return Promise.resolve(result);
         })
         .catch((err) => Promise.reject(err));
 };
 
-const getUserAndVerifyToken = (token) => {
-    // token from client, make sure consistence
+const getAllJobs = () => {
     return httpClient
-        .post("/employee/profile", {}, { headers: {"access-token": `Bearer ${token}`} })
+        .post(`/list-all-of-jobs`)
         .then((result) => {
             return Promise.resolve(result);
         })
         .catch((err) => Promise.reject(err));
-}
+};
 
 export default {
-    userRegister,
-    userLogin,
-    getUserAndVerifyToken
+    getSingleCompanyDetail,
+    getAllCompanies,
+    getAllJobs,
 };
