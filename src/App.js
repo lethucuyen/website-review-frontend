@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 //import "./App.css";
 import React, {useEffect, useState} from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Home from "./views/Home";
@@ -28,25 +28,41 @@ import EmployeeChangePassword from "./views/Employee/Employee_Change_Password";
 import EmployeeResume from "./views/Employee/Employee_Resume";
 import EmployeeReviews from "./views/Employee/Employee_Reviews";
 import { useSelector, useDispatch } from "react-redux";
-import authorizationActions from "./redux/actions/authorizationActions"
+import axios from "axios";
+import actionCreators from "./redux/action-creators";
 
 const App = () => {
   const authorizationReducer = useSelector((state) => state.authorizationReducer);
   const dispatch = useDispatch();
+  const {isAuthenticated} = authorizationReducer;
+  let Token = null;
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      dispatch(authorizationActions.setIsAuthenticatedAction(true));
+  const _getTokenFromStorage = async () => {
+    const result = localStorage.getItem("token");
+    if (result != null) {
+      Token = result;
+      dispatch(actionCreators.authorization.getUserAndVerifyToken(Token));
+      return;
     }
-    else dispatch(authorizationActions.setIsAuthenticatedAction(false)); 
-  }, [localStorage])
+    dispatch(actionCreators.authorization.userLogout());
+  }
+
+  const RedirectComponent = () => {
+    return <Redirect to="/" />
+  }
+  
+  useEffect(() => {
+    _getTokenFromStorage();
+  }, [Token])
+
+  console.log(isAuthenticated);
 
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={isAuthenticated ? RedirectComponent : Login} />
+        <Route exact path="/register" component={isAuthenticated ? RedirectComponent : Register} />
         <Route exact path="/job-list" component={JobList} />
         <Route exact path="/job-details" component={JobDetails} />
         <Route exact path="/job-post-1" component={JobPost1} />

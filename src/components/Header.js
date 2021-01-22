@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import authorizationActions from "../redux/actions/authorizationActions"
+import actionCreators from "../redux/action-creators"
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -11,10 +11,8 @@ const Header = (props) => {
   const { isAuthenticated } = authorizationReducer;
 
   const onLogOut = () => {
-    dispatch(authorizationActions.logOut(false));
+    dispatch(actionCreators.authorization.userLogout());
   }
-
-
 
   return (
     <header class="main-header">

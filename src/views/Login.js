@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useDispatch } from "react-redux";
-import authorizationActions from "../redux/actions/authorizationActions"
+import { Redirect} from "react-router-dom"
+
+import axios from "axios";
+import actionCreators from "../redux/action-creators";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("khactrieu98@gmail.com");
-  const [password, setPassword] = useState("12345");
+  const [username, setUsername] = useState("Htcuyen");
+  const [password, setPassword] = useState("123456");
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log('Log in: ', email, password);
-    dispatch(authorizationActions.setIsAuthenticatedAction(true));
-    localStorage.setItem("token", "token");
+    dispatch(actionCreators.authorization.userLogin(username, password));
   }
   
   return (
@@ -52,13 +53,13 @@ const Login = () => {
                     {/*<!-- form login -->*/}
                     <form onSubmit={onSubmit}>
                       <div class="form-group">
-                        <label>Email</label>
+                        <label>username</label>
                         <input
-                          type="email"
+                          type="text"
                           class="form-control"
-                          placeholder="Your Email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Your username"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
                         />
                       </div>
                       <div class="form-group">
