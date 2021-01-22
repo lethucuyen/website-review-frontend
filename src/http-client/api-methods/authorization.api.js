@@ -21,7 +21,7 @@ const userLogin = (email, password) => {
 const getUserAndVerifyToken = (token) => {
     // token from client, make sure consistence
     return httpClient
-        .get("/employee/profile", { "access-token": `Bearer ${token}` })
+        .post("/employee/profile", {}, { headers: {"access-token": `Bearer ${token}`} })
         .then((result) => {
             return Promise.resolve(result);
         })

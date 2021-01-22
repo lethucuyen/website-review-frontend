@@ -2,7 +2,7 @@ import httpClient from '../config/http-client';
 
 const getAllCompanies = () => {
     return httpClient
-        .get('/company/list-company')
+        .post('/company/list-company')
         .then((result) => {
             return Promise.resolve(result);
         })
@@ -11,7 +11,7 @@ const getAllCompanies = () => {
 
 const getSingleCompanyDetail = (companyId) => {
     return httpClient
-        .get(`/company/details-company/${companyId}`)
+        .post(`/company/details-company/`, {companyId})
         .then((result) => {
             return Promise.resolve(result);
         })
@@ -20,7 +20,7 @@ const getSingleCompanyDetail = (companyId) => {
 
 const getAllJobs = () => {
     return httpClient
-        .get(`/list-all-of-jobs`)
+        .post(`/list-all-of-jobs`)
         .then((result) => {
             return Promise.resolve(result);
         })
