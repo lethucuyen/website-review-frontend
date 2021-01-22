@@ -282,12 +282,12 @@ const JobList = ({ disabled = false }) => {
                     <div class="col-sm-6  ">
                       <p>
                         <strong class="color-black">
-                          PHP jobs in United States
+                          Top Jobs
                         </strong>
                       </p>
                     </div>
                     <div class="col-sm-6">
-                      <p class="text-right">Jobs 1 to 10 of 578</p>
+                      {!disabled ? <p class="text-right">Jobs 1 to 10 of 578</p> : <div />}
                     </div>
                   </div>
                   {/* <!-- end desc top --> */}
@@ -370,17 +370,17 @@ const JobList = ({ disabled = false }) => {
                   {/* <!-- form get alert --> */}
                   <div class="get_alert">
                     <h4>
-                      Get email updates for the latest{" "}
-                      <span class=" ">PHP jobs in United States</span>
+                      Nhận cập nhật qua email về{" "}
+                      <span class=" ">các công việc mới nhất</span>
                     </h4>
                     <form>
                       <div class="row">
                         <div class="col-md-9">
                           <div class="form-group">
-                            <label>My Email</label>
+                            <label>Email của tôi</label>
                             <input
                               class="form-control"
-                              placeholder="Enter Email"
+                              placeholder="Nhập Email"
                             />
                           </div>
                         </div>
@@ -388,12 +388,12 @@ const JobList = ({ disabled = false }) => {
                           <div class="form-group">
                             <label class="hidden-sm hidden-xs ">&nbsp;</label>
                             <button class="btn btn-theme btn-success btn-block">
-                              Activate
+                              Gửi
                             </button>
                           </div>
                         </div>
                       </div>
-                      <small>You can cancel email alerts at any time.</small>
+                      <small>Bạn có thể huỷ thông báo qua email bất cứ lúc nào.</small>
                     </form>
                   </div>
                   {/* <!-- end form get alert --> */}
