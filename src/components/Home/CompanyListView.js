@@ -79,8 +79,6 @@ const CompanyListView = ({companies}) => {
       rated: "Tốt nhất về Văn phòng làm việc",
     }));
 
-    console.log(list);
-
     return list;
   }
 
@@ -109,10 +107,9 @@ const CompanyListView = ({companies}) => {
       />
     </Grid>
     <Grid container spacing={2} className={classes.mainContent}>
-      {[...data, ...items].map((item) => (
+      {(items.length > 8 ? [...data, ...items] : items).map((item) => (
         <Grid item xs={4} key={uuid()}>
           <CompanyListItem props={{ ...item, onClick: () => {
-            console.log("item =", item);
             goToCompany(item.id);
           } }} />
         </Grid>

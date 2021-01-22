@@ -56,9 +56,7 @@ const HomeSearchBox = ({ handleSubmit }) => {
 
   // Handle input change
   const handleInputChange = (e) => {
-    console.log(e);
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log("formData =", formData);
   };
 
   return (

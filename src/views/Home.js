@@ -47,7 +47,7 @@ class Home extends React.Component {
                     </div>
                     <div class="form-group">
                       <button class="btn btn-t-primary btn-lg btn-theme btn-pill btn-block">
-                        Find a Jobs
+                        Tìm kiếm công việcs
                       </button>
                     </div>
                     <div class="text-center">

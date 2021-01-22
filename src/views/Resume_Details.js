@@ -84,7 +84,7 @@ class Resume_Details extends React.Component {
                       </h4>
                     </div>
                     <div class="modal-body">
-                      <h5>Find resumes with</h5>
+                      <h5>Tìm kiếm hồ sơ ứng tuyểns with</h5>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -178,7 +178,7 @@ class Resume_Details extends React.Component {
                         Close
                       </button>
                       <button type="submit" class="btn btn-success btn-theme">
-                        Find Resumes
+                        Tìm kiếm hồ sơ ứng tuyển
                       </button>
                     </div>
                   </form>

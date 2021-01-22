@@ -22,7 +22,7 @@ class JobPost2 extends React.Component {
         <div class="body-content clearfix">
           <div class="bg-color2 block-section line-bottom">
             <div class="container">
-              <h1 class="text-center no-margin">Post a Job</h1>
+              <h1 class="text-center no-margin">Đăng Job</h1>
             </div>
           </div>
 

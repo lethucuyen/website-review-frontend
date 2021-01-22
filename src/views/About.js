@@ -65,7 +65,7 @@ class About extends React.Component {
                       href="#"
                       class="btn btn-sm btn-pill btn-theme btn-line dark"
                     >
-                      Find a Jobs
+                      Tìm kiếm công việcs
                     </a>
                   </div>
                 </div>
@@ -120,7 +120,7 @@ class About extends React.Component {
                 <div class="col-md-6">
                   <div class="box-ic-center">
                     <i class="fa fa-clipboard ic-box"></i>
-                    <h4>Post a job</h4>
+                    <h4>Đăng công việc</h4>
                     <p>
                       Cras sit amet nibh libero, in gravida nulla. Nulla vel
                       metus scelerisque ante sollicitudin commodo. Cras purus
@@ -130,14 +130,14 @@ class About extends React.Component {
                       href="#"
                       class="btn btn-sm btn-pill btn-theme btn-line dark"
                     >
-                      Post a Job
+                      Đăng Job
                     </a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="box-ic-center ">
                     <i class="fa fa-search ic-box"></i>
-                    <h4>Find Resumes</h4>
+                    <h4>Tìm kiếm hồ sơ ứng tuyển</h4>
                     <p>
                       Cras sit amet nibh libero, in gravida nulla. Nulla vel
                       metus scelerisque ante sollicitudin commodo. Cras purus
@@ -147,7 +147,7 @@ class About extends React.Component {
                       href="#"
                       class="btn btn-sm btn-pill btn-theme btn-line dark"
                     >
-                      Find Resumes
+                      Tìm kiếm hồ sơ ứng tuyển
                     </a>
                   </div>
                 </div>
