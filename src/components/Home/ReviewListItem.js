@@ -79,7 +79,13 @@ const ReviewListItem = ({ props }) => {
   const { companyAvatar, companyName, star, content, dateDesc, onClick } = props;
 
   return (<Card>
-    <CardActionArea className={classes.root}>
+    <CardActionArea
+      className={classes.root}
+      onClick={(event) => {
+        event.preventDefault();
+        onClick();
+      }}
+    >
       <Grid container justify="flex-start" alignItems="center" spacing={1}>
         <Grid item xs={3}>
           <CardMedia
@@ -107,7 +113,7 @@ const ReviewListItem = ({ props }) => {
       </Box>
       <Typography variant="body2" color="textSecondary">{dateDesc}</Typography>
     </CardActionArea>
-  </Card>);
+  </Card >);
 }
 
 

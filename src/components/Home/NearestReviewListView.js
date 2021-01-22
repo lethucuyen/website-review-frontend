@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid } from "uuid";
+// import { useHistory } from "react-router-dom";
 
 
 import {
@@ -30,9 +31,12 @@ const useStyles = makeStyles(() => ({
 
 const NearestReviewListView = () => {
   const classes = useStyles();
+  // const history = useHistory();
 
   const goToReview = () => {
-    console.log("goToReview");
+    const win = window.open("/client-company", "_blank");
+    win.focus();
+    // history.push('/nha-tuyen-dung?id=id');
   };
 
   return (<div className={classes.paper}>

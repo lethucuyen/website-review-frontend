@@ -28,6 +28,7 @@ import EmployeeChangePassword from "./views/Employee/Employee_Change_Password";
 import EmployeeResume from "./views/Employee/Employee_Resume";
 import EmployeeReviews from "./views/Employee/Employee_Reviews";
 import ClientHome from "./views/ClientHome";
+import ClientCompany from "./views/ClientCompany";
 // Material UI
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -62,6 +63,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={ClientHome} />
+          <Route exact path="/client-company" component={ClientCompany} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job-list" component={JobList} />

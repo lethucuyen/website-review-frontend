@@ -97,7 +97,12 @@ const CompanyListItem = ({ props }) => {
   return (<Card className={classes.root}>
     <Grid container direction="column" justify="flex-end">
       <Card className={classes.root}>
-        <CardActionArea>
+        <CardActionArea
+          onClick={(event) => {
+            event.preventDefault();
+            onClick();
+           }}
+        >
           <CardMedia
             component="img"
             alt="Contemplative Reptile"

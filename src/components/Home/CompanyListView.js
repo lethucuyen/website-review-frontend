@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid } from "uuid";
 
@@ -10,6 +10,7 @@ import BaseSelect from "../../common/BaseSelect";
 
 
 import CompanyListItem from "./CompanyListItem";
+import CompanyService from "../../services/CompanyService";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +47,7 @@ const CompanyListView = () => {
   const classes = useStyles();
 
   const [sortValue, setSortValue] = React.useState(1);
+  const [items, setItems] = React.useState([]);
 
   const sortOptions = [{ name: "Tên", value: 0 }, { name: "Tốt nhất", value: 1 }, { name: "", value: "" }];
 
@@ -53,8 +55,24 @@ const CompanyListView = () => {
     setSortValue(event.target.value);
   };
 
+  useEffect(() => {
+    retrieveCompanies();
+  }, []);
+
+  const retrieveCompanies = () => {
+    CompanyService.getAll()
+      .then(response => {
+        setItems(response.data);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   const goToCompany = () => {
-    console.log("let's go!");
+    const win = window.open("/client-company", "_blank");
+    win.focus();
   };
 
   return (<div className={classes.paper}>
