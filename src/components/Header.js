@@ -26,17 +26,17 @@ const Header = (props) => {
             <ul className="nav navbar-nav">
               <li className="">
                 <Link to="job-list">
-                  <strong>Find a Job</strong>
+                  <strong>Tìm kiếm công việc</strong>
                 </Link>
               </li>
               <li className="">
                 <Link to="resume-list">
-                  <strong>Find Resumes</strong>
+                  <strong>Tìm kiếm hồ sơ ứng tuyển</strong>
                 </Link>
               </li>
               <li className="">
                 <Link to="job-post-1">
-                  <strong>Post a Job</strong>
+                  <strong>Đăng Job</strong>
                 </Link>
               </li>
               <li className="dropdown">
@@ -46,7 +46,7 @@ const Header = (props) => {
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Pages <span className="caret"></span>
+                  Trang <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu" role="menu">
                   <li>
@@ -76,26 +76,26 @@ const Header = (props) => {
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Features <span className="caret"></span>
+                  Các tính năng <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu" role="menu">
                   <li>
-                    <Link to="/job-list">Find a Job</Link>
+                    <Link to="/job-list">Tìm kiếm công việc</Link>
                   </li>
                   <li>
-                    <Link to="job-details">Job Details</Link>
+                    <Link to="job-details">Chi tiết Job</Link>
                   </li>
                   <li>
-                    <Link to="company-list">Find Resumes</Link>
+                    <Link to="company-list">Tìm kiếm hồ sơ ứng tuyển</Link>
                   </li>
                   <li>
-                    <Link to="resume-details">Resume Details</Link>
+                    <Link to="resume-details">Chi tiết Hồ sơ ứng tuyển</Link>
                   </li>
                   <li>
-                    <Link to="job-post-2">Post a Job</Link>
+                    <Link to="job-post-2">Đăng Job</Link>
                   </li>
                   <li>
-                    <Link to="company-page">Company Profile</Link>
+                    <Link to="company-page">Chi tiết Công ty</Link>
                   </li>
                 </ul>
               </li>
@@ -179,17 +179,17 @@ const Header = (props) => {
             <ul className="nav navbar-nav">
               <li className="">
                 <Link to="/job-list">
-                  <strong>Find a Job</strong>
+                  <strong>Tìm kiếm công việc</strong>
                 </Link>
               </li>
               <li className="">
                 <Link to="/resume-list">
-                  <strong>Find Resumes</strong>
+                  <strong>Tìm kiếm hồ sơ ứng tuyển</strong>
                 </Link>
               </li>
               <li className="">
                 <Link to="/job-post-1">
-                  <strong>Post a Job</strong>
+                  <strong>Đăng Job</strong>
                 </Link>
               </li>
               <li>
@@ -209,7 +209,7 @@ const Header = (props) => {
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Pages <span className="caret"></span>
+                  Trang <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu" role="menu">
                   <li>
@@ -239,26 +239,26 @@ const Header = (props) => {
                   data-toggle="dropdown"
                   role="button"
                 >
-                  Features <span className="caret"></span>
+                  Các tính năng <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu" role="menu">
                   <li>
-                    <Link to="/job-list">Find a Job</Link>
+                    <Link to="/job-list">Tìm kiếm công việc</Link>
                   </li>
                   <li>
-                    <Link to="/job-details">Job Details</Link>
+                    <Link to="/job-details">Chi tiết Job</Link>
                   </li>
                   <li>
-                    <Link to="/company-list">Find Resumes</Link>
+                    <Link to="/company-list">Tìm kiếm hồ sơ ứng tuyển</Link>
                   </li>
                   <li>
-                    <Link to="/resume-details">Resume Details</Link>
+                    <Link to="/resume-details">Chi tiết Hồ sơ ứng tuyển</Link>
                   </li>
                   <li>
-                    <Link to="/job-post-2">Post a Job</Link>
+                    <Link to="/job-post-2">Đăng Job</Link>
                   </li>
                   <li>
-                    <Link to="/company-page">Company Profile</Link>
+                    <Link to="/company-page">Chi tiết Công ty</Link>
                   </li>
                 </ul>
               </li>

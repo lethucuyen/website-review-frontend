@@ -16,17 +16,17 @@ class Header1 extends React.Component {
               <ul class="nav navbar-nav">
                 <li class="">
                   <Link to="job-list">
-                    <strong>Find a Job</strong>
+                    <strong>Tìm kiếm công việc</strong>
                   </Link>
                 </li>
                 <li class="">
                   <Link to="company-list">
-                    <strong>Find Resumes</strong>
+                    <strong>Tìm kiếm hồ sơ ứng tuyển</strong>
                   </Link>
                 </li>
                 <li class="">
                   <Link to="job-post-1">
-                    <strong>Post a Job</strong>
+                    <strong>Đăng Job</strong>
                   </Link>
                 </li>
                 <li class="dropdown">
@@ -36,7 +36,7 @@ class Header1 extends React.Component {
                     data-toggle="dropdown"
                     role="button"
                   >
-                    Pages <span class="caret"></span>
+                    Trang <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li>
@@ -66,26 +66,26 @@ class Header1 extends React.Component {
                     data-toggle="dropdown"
                     role="button"
                   >
-                    Features <span class="caret"></span>
+                    Các tính năng <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li>
-                      <Link to="/job-list">Find a Job</Link>
+                      <Link to="/job-list">Tìm kiếm công việc</Link>
                     </li>
                     <li>
-                      <Link to="job-details">Job Details</Link>
+                      <Link to="job-details">Chi tiết Job</Link>
                     </li>
                     <li>
-                      <Link to="company-list">Find Resumes</Link>
+                      <Link to="company-list">Tìm kiếm hồ sơ ứng tuyển</Link>
                     </li>
                     <li>
-                      <Link to="resume-details">Resume Details</Link>
+                      <Link to="resume-details">Chi tiết Hồ sơ ứng tuyển</Link>
                     </li>
                     <li>
-                      <Link to="job-post-2">Post a Job</Link>
+                      <Link to="job-post-2">Đăng Job</Link>
                     </li>
                     <li>
-                      <Link to="company-page">Company Profile</Link>
+                      <Link to="company-page">Chi tiết Công ty</Link>
                     </li>
                   </ul>
                 </li>
@@ -149,17 +149,17 @@ class Header1 extends React.Component {
               <ul class="nav navbar-nav">
                 <li class="">
                   <Link to="/job-list">
-                    <strong>Find a Job</strong>
+                    <strong>Tìm kiếm công việc</strong>
                   </Link>
                 </li>
                 <li class="">
                   <Link to="/company-list">
-                    <strong>Find Resumes</strong>
+                    <strong>Tìm kiếm hồ sơ ứng tuyển</strong>
                   </Link>
                 </li>
                 <li class="">
                   <Link to="/job-post-1">
-                    <strong>Post a Job</strong>
+                    <strong>Đăng Job</strong>
                   </Link>
                 </li>
                 <li>
@@ -179,7 +179,7 @@ class Header1 extends React.Component {
                     data-toggle="dropdown"
                     role="button"
                   >
-                    Pages <span class="caret"></span>
+                    Trang <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li>
@@ -209,26 +209,26 @@ class Header1 extends React.Component {
                     data-toggle="dropdown"
                     role="button"
                   >
-                    Features <span class="caret"></span>
+                    Các tính năng <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li>
-                      <Link to="/job-list">Find a Job</Link>
+                      <Link to="/job-list">Tìm kiếm công việc</Link>
                     </li>
                     <li>
-                      <Link to="/job-details">Job Details</Link>
+                      <Link to="/job-details">Chi tiết Job</Link>
                     </li>
                     <li>
-                      <Link to="/company-list">Find Resumes</Link>
+                      <Link to="/company-list">Tìm kiếm hồ sơ ứng tuyển</Link>
                     </li>
                     <li>
-                      <Link to="/resume-details">Resume Details</Link>
+                      <Link to="/resume-details">Chi tiết Hồ sơ ứng tuyển</Link>
                     </li>
                     <li>
-                      <Link to="/job-post-2">Post a Job</Link>
+                      <Link to="/job-post-2">Đăng Job</Link>
                     </li>
                     <li>
-                      <Link to="/company-page">Company Profile</Link>
+                      <Link to="/company-page">Chi tiết Công ty</Link>
                     </li>
                   </ul>
                 </li>

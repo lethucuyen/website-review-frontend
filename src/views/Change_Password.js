@@ -48,7 +48,7 @@ class ChangePassword extends React.Component {
                     href="#"
                     class="btn  btn-line soft btn-theme btn-pill btn-block"
                   >
-                    Post a Job
+                    Đăng Job
                   </a>
                   <a
                     href="#"

@@ -157,7 +157,7 @@ class JobPost1 extends React.Component {
             <div class="container">
               <div class="row">
                 <div class="col-md-6 text-center-sm">
-                  <h2>Post a Job</h2>
+                  <h2>Đăng Job</h2>
                   <p>
                     Post your jobs directly to JobPlanet in minutes. You'll get
                     quality applicants sent directly to your inbox, no website
@@ -193,7 +193,7 @@ class JobPost1 extends React.Component {
                   <img src="./assets/theme/images/mac.png" alt="" />
                 </div>
                 <div class="col-md-6 text-center-sm">
-                  <h2>Company Profile</h2>
+                  <h2>Chi tiết Công ty</h2>
                   <p>
                     Post your jobs directly to JobPlanet in minutes. You'll get
                     quality applicants sent directly to your inbox, no website
@@ -228,7 +228,7 @@ class JobPost1 extends React.Component {
                       href="resume_list.html"
                       class=" btn btn-theme btn-t-primary"
                     >
-                      Find Resumes
+                      Tìm kiếm hồ sơ ứng tuyển
                     </a>
                   </p>
                   <p>

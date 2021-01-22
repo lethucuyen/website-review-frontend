@@ -38,7 +38,7 @@ class Error404 extends React.Component {
                     <a href="#">Home</a>
                   </li>
                   <li>
-                    <a href="#">Find a Job</a>
+                    <a href="#">Tìm kiếm công việc</a>
                   </li>
                   <li>
                     {" "}
