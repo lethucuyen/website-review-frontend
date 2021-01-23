@@ -127,7 +127,7 @@ const CompanyTabView = ({ info }) => {
             <CompanyJobs info={info} />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <ListReviews listReviews={info.listReviews} />
+            <ListReviews listReviews={info.listReviews} info={info} />
           </TabPanel>
         </SwipeableViews>
       </div>

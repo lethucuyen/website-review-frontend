@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const ListReview = ({ listReviews }) => {
+const ListReview = ({ listReviews, info }) => {
   const classes = useStyles();
   const [content, setContent] = React.useState("");
   const [rating, setRating] = React.useState(0);
@@ -79,7 +79,8 @@ const ListReview = ({ listReviews }) => {
       CompanyService.writeReview(postData)
         .then((response) => {
           console.log(response);
-          history.push(`/client-company?id=${info.id}`);
+          //history.push(`/client-company?id=${info.id}`);
+          window.location.reload(true);
         })
         .catch((e) => {
           console.log(e);
