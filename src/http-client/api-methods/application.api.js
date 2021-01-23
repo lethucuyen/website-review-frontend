@@ -27,8 +27,18 @@ const getAllJobs = () => {
         .catch((err) => Promise.reject(err));
 };
 
+const getSingleJob = (id) => {
+    return httpClient
+        .post(`/job`, {id: id})
+        .then((result) => {
+            return Promise.resolve(result);
+        })
+        .catch((err) => Promise.reject(err));
+};
+
 export default {
     getSingleCompanyDetail,
     getAllCompanies,
     getAllJobs,
+    getSingleJob,
 };

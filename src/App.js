@@ -102,7 +102,8 @@ const App = () => {
           <Route exact path="/login" component={isAuthenticated ? RedirectComponent : Login} />
           <Route exact path="/register" component={isAuthenticated ? RedirectComponent : Register} />
           <Route exact path="/job-list" component={JobList} />
-          <Route exact path="/job-details" component={JobDetails} />
+          {/* <Route exact path="/job-details" component={JobDetails} /> */}
+          <Route path="/job-details/:id" component={JobDetails} />
           <Route exact path="/job-post-1" component={JobPost1} />
           <Route exact path="/job-post-2" component={JobPost2} />
           <Route exact path="/my-alerts" component={MyAlert} />
