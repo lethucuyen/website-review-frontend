@@ -1,10 +1,14 @@
 import logo from "./logo.svg";
 //import "./App.css";
 import React, { useEffect, useState, Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Login from "./views/Login";
 //import LoginAdmin from "./views/Login_Admin";
-
 
 import Register from "./views/Register";
 import Home from "./views/Home";
@@ -33,8 +37,8 @@ import EmployeeReviews from "./views/Employee/Employee_Reviews";
 import ClientHome from "./views/ClientHome";
 import ClientCompany from "./views/ClientCompany";
 // Material UI
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -42,33 +46,35 @@ import actionCreators from "./redux/action-creators";
 
 //admin site
 
-import './mixins/chartjs';
-import theme from './theme';
-import DashboardLayout from '../src/layouts/DashboardLayout';
-import MainLayout from '../src/layouts/MainLayout';
-import AccountView from '../src/views/account/AccountView';
-import UserListView from './views/user/UserListView';
-import DashboardView from '../src/views/reports/DashboardView';
-import LoginView from '../src/views/auth/LoginView';
-import NotFoundView from '../src/views/errors/NotFoundView';
-import CompanyListView from '../src/views/company/CompanyListView';
-import RegisterView from '../src/views/auth/RegisterView';
-import SettingsView from '../src/views/settings/SettingsView';
-import GlobalStyles from '../src/components/GlobalStyles';
+import "./mixins/chartjs";
+import theme from "./theme";
+import DashboardLayout from "../src/layouts/DashboardLayout";
+import MainLayout from "../src/layouts/MainLayout";
+import AccountView from "../src/views/account/AccountView";
+import UserListView from "./views/user/UserListView";
+import DashboardView from "../src/views/reports/DashboardView";
+import LoginView from "../src/views/auth/LoginView";
+import NotFoundView from "../src/views/errors/NotFoundView";
+import CompanyListView from "../src/views/company/CompanyListView";
+import RegisterView from "../src/views/auth/RegisterView";
+import SettingsView from "../src/views/settings/SettingsView";
+import GlobalStyles from "../src/components/GlobalStyles";
+import ReviewCard from "../src/components/Company/ListReview";
 
 const THEME = createMuiTheme({
   typography: {
-    "fontFamily": `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
-    "fontSize": 18,
-    "fontWeightLight": 300,
-    "fontWeightRegular": 400,
-    "fontWeightMedium": 500,
-
-  }
+    fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
+    fontSize: 18,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+  },
 });
 
 const App = () => {
-  const authorizationReducer = useSelector((state) => state.authorizationReducer);
+  const authorizationReducer = useSelector(
+    (state) => state.authorizationReducer
+  );
   const dispatch = useDispatch();
   const { isAuthenticated } = authorizationReducer;
   let Token = null;
@@ -81,15 +87,15 @@ const App = () => {
       return;
     }
     dispatch(actionCreators.authorization.userLogout());
-  }
+  };
 
   const RedirectComponent = () => {
-    return <Redirect to="/" />
-  }
+    return <Redirect to="/" />;
+  };
 
   useEffect(() => {
     _getTokenFromStorage();
-  }, [Token])
+  }, [Token]);
 
   console.log(isAuthenticated);
 
@@ -99,8 +105,16 @@ const App = () => {
         <ThemeProvider theme={THEME}>
           <Route exact path="/" component={ClientHome} />
           <Route exact path="/client-company" component={ClientCompany} />
-          <Route exact path="/login" component={isAuthenticated ? RedirectComponent : Login} />
-          <Route exact path="/register" component={isAuthenticated ? RedirectComponent : Register} />
+          <Route
+            exact
+            path="/login"
+            component={isAuthenticated ? RedirectComponent : Login}
+          />
+          <Route
+            exact
+            path="/register"
+            component={isAuthenticated ? RedirectComponent : Register}
+          />
           <Route exact path="/job-list" component={JobList} />
           {/* <Route exact path="/job-details" component={JobDetails} /> */}
           <Route path="/job-details/:id" component={JobDetails} />
@@ -121,7 +135,11 @@ const App = () => {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/error-404" component={Error} />
           <Route exact path="/employee-profile" component={EmployeeProfile} />
-          <Route exact path="/employee-following" component={EmployeeFollowing} />
+          <Route
+            exact
+            path="/employee-following"
+            component={EmployeeFollowing}
+          />
           <Route
             exact
             path="/employee-change-password"
@@ -130,7 +148,6 @@ const App = () => {
           <Route exact path="/employee-resume" component={EmployeeResume} />
           <Route exact path="/employee-reviews" component={EmployeeReviews} />
         </ThemeProvider>
-
 
         {/*  
         <Route exact path="/app-admin" component={DashboardLayout} />
@@ -172,11 +189,9 @@ const App = () => {
         <Route exact path="/admin/login" component={LoginView} />
         <Route exact path="/admin/register" component={RegisterView} />
           */}
-
-
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

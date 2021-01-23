@@ -44,10 +44,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostCard = ({ reviewerName, createDate, content, avatar, rating }) => {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(0);
   const classes = useStyles();
   return (
-    <Card>
+    <Card style={{ border: "1px solid #ced4da", marginBottom: "5px" }}>
       <CardHeader
         avatar={avatar}
         title={reviewerName}

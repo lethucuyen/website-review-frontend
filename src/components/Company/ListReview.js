@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Rating from "@material-ui/lab/Rating";
@@ -16,6 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { FormGroup, Input, Button, TextareaAutosize } from "@material-ui/core";
+import _clone from "lodash/clone";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -41,12 +42,34 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const ListReview = () => {
+const ListReview = ({ listReviews }) => {
   const classes = useStyles();
+  const [content, setContent] = React.useState([]);
+  const [rating, setRating] = React.useState(0);
+  const [items, setItems] = React.useState([]);
+  useEffect(() => {
+    console.log(listReviews);
+    const list = buildItems(listReviews);
+    setItems(list);
+  }, [listReviews]);
+
+  const buildItems = (listRev) => {
+    if (listRev.length > 0) {
+      const list = _clone(listRev).map((i) => ({
+        id: i._id,
+        content: i.content,
+        rating: i.rating,
+        employeeId: i.employeeId,
+        createAt: new Date(i.createAt),
+      }));
+      console.log(list);
+      return list;
+    } else return [];
+  };
   return (
-    <Grid item sm={12} md={6}>
+    <Grid>
       <Grid style={{ marginBottom: "30px" }}>
-        <Card>
+        <Card style={{ borderColor: "black", border: "solid 1px" }}>
           <CardHeader
             title="Write a review"
             titleTypographyProps={{ variant: "h4" }}
@@ -56,7 +79,7 @@ const ListReview = () => {
               <Typography component="p" className={classes.clamp}>
                 Overall rating
               </Typography>
-              <Rating name="simple-controlled" value={2} />
+              <Rating name="simple-controlled" value={rating} />
               <Typography component="p" className={classes.clamp}>
                 Your review
               </Typography>
@@ -75,19 +98,31 @@ const ListReview = () => {
           </CardContent>{" "}
         </Card>
       </Grid>
+      <Typography component="p" variant="h4" style={{ marginBottom: "20px" }}>
+        Reviews
+      </Typography>
       <span className="flexSpacer" />
       <Grid>
-        <ReviewCard
-          reviewerName="Shrimp and Chorizo Paella"
-          createDate="Yesterday"
-          avatar={
-            <Avatar aria-label="Post" style={{ backgroundColor: "red" }}>
-              R
-            </Avatar>
-          }
-          rating={3}
-          content="Phileas Fogg and Aouda went on board, where they found Fix already installed. Below deck was a square cabin, of which the walls bulged out in the form of cots, above a circular divan; in the centre was a table provided with a swinging lamp."
-        />
+        {items.length > 0
+          ? items.map((item, i) => {
+              return (
+                <ReviewCard
+                  reviewerName={item.id}
+                  createDate={item.createDate}
+                  avatar={
+                    <Avatar
+                      aria-label="Post"
+                      style={{ backgroundColor: "red" }}
+                    >
+                      R
+                    </Avatar>
+                  }
+                  rating={item.rating}
+                  content={item.content}
+                />
+              );
+            })
+          : null}
       </Grid>
     </Grid>
   );
