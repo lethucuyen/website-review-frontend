@@ -1,30 +1,30 @@
-import httpClient from '../config/http-client';
+import httpClient from "../config/http-client";
 
 const getAllCompanies = () => {
-    return httpClient
-        .post('/company/list-company')
-        .then((result) => {
-            return Promise.resolve(result);
-        })
-        .catch((err) => Promise.reject(err));
+  return httpClient
+    .post("/company/list-company")
+    .then((result) => {
+      return Promise.resolve(result);
+    })
+    .catch((err) => Promise.reject(err));
 };
 
 const getSingleCompanyDetail = (companyId) => {
-    return httpClient
-        .post(`/company/details-company/`, {companyId})
-        .then((result) => {
-            return Promise.resolve(result);
-        })
-        .catch((err) => Promise.reject(err));
+  return httpClient
+    .post(`/company/details-company/`, { id: companyId })
+    .then((result) => {
+      return Promise.resolve(result);
+    })
+    .catch((err) => Promise.reject(err));
 };
 
 const getAllJobs = () => {
-    return httpClient
-        .post(`/list-all-of-jobs`)
-        .then((result) => {
-            return Promise.resolve(result);
-        })
-        .catch((err) => Promise.reject(err));
+  return httpClient
+    .post(`/list-all-of-jobs`)
+    .then((result) => {
+      return Promise.resolve(result);
+    })
+    .catch((err) => Promise.reject(err));
 };
 
 const getSingleJob = (id) => {
