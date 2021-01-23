@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Rating from "@material-ui/lab/Rating";
 import Card from "@material-ui/core/Card";
@@ -16,6 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { FormGroup, Input, Button, TextareaAutosize } from "@material-ui/core";
+import CompanyService from "../../services/CompanyService";
 import _clone from "lodash/clone";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,9 +45,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 const ListReview = ({ listReviews }) => {
   const classes = useStyles();
-  const [content, setContent] = React.useState([]);
+  const [content, setContent] = React.useState("");
   const [rating, setRating] = React.useState(0);
   const [items, setItems] = React.useState([]);
+  const history = useHistory();
   useEffect(() => {
     console.log(listReviews);
     const list = buildItems(listReviews);
@@ -66,6 +68,24 @@ const ListReview = ({ listReviews }) => {
       return list;
     } else return [];
   };
+  const handleSubmit = () => {
+    const postData = {
+      content: content,
+      rating: rating,
+      employeeId: "6002b6d1b3fe501c80236eb1",
+      companyId: info.id,
+    };
+    if (localStorage.getItem("token"))
+      CompanyService.writeReview(postData)
+        .then((response) => {
+          console.log(response);
+          history.push(`/client-company?id=${info.id}`);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    else alert("Vui lòng đăng nhập để đăng review!");
+  };
   return (
     <Grid>
       <Grid style={{ marginBottom: "30px" }}>
@@ -79,11 +99,26 @@ const ListReview = ({ listReviews }) => {
               <Typography component="p" className={classes.clamp}>
                 Overall rating
               </Typography>
-              <Rating name="simple-controlled" value={rating} />
+              <Rating
+                name="simple-controlled"
+                value={rating}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setRating(e.target.value);
+                }}
+              />
               <Typography component="p" className={classes.clamp}>
                 Your review
               </Typography>
-              <TextareaAutosize rowsMin={3} placeholder="Enter content" />
+              <TextareaAutosize
+                rowsMin={3}
+                placeholder="Enter content"
+                value={content}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setContent(e.target.value);
+                }}
+              />
               <Button
                 style={{
                   width: "100px",
@@ -91,6 +126,7 @@ const ListReview = ({ listReviews }) => {
                 }}
                 variant="contained"
                 color="primary"
+                onClick={handleSubmit}
               >
                 Submit
               </Button>

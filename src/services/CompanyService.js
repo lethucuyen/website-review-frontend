@@ -11,9 +11,12 @@ const findByTitle = (data = {}) => {
 const findById = (data = {}) => {
   return http.post("/company/details-company", data);
 };
-
+const writeReview = (data = {}) => {
+  return http.post("/employee/add-review", data);
+};
 export default {
   getAll,
   findByTitle,
   findById,
+  writeReview,
 };
