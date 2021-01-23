@@ -1,10 +1,30 @@
 /* eslint-disable react/style-prop-object */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-class JobDetails extends React.Component {
-  render() {
+import apiMethods from "../http-client/api-methods";
+
+const JobDetails = (props) => {
+  const { id } = props.match.params;
+  const [ jobDetails, setJobDetails ] = useState({});
+
+  const _getJobDetails = async () => {
+    await apiMethods.application.getSingleJob(id)
+      .then(result => result.data.result)
+      .then(result => {
+        console.log(result);
+        setJobDetails(result);
+      })
+      .catch(error => {
+      });
+  }
+  
+  useEffect(() => {
+    _getJobDetails()
+  }, [props.match.params]);
+
+
     return (
       <div class="wrapper">
         <Header>
@@ -210,7 +230,7 @@ class JobDetails extends React.Component {
             <div class="container">
               <div class="row">
                 <div class="col-sm-6 hidden-xs">
-                  <div>Job details :</div>
+                  <div>Job details: {jobDetails.name} </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="text-right">
@@ -245,7 +265,7 @@ class JobDetails extends React.Component {
                     </div>
 
                     <h2 class="title">
-                      <a href="#">Full Stack Web Developer, Internal Tools</a>
+                      <a href="#">{jobDetails.name}</a>
                     </h2>
                     <div class="job-meta">
                       <ul class="list-inline">
@@ -502,6 +522,5 @@ class JobDetails extends React.Component {
         <Footer />
       </div>
     );
-  }
 }
 export default JobDetails;

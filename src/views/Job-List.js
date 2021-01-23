@@ -5,49 +5,6 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import apiMethods from "../http-client/api-methods";
 const JobList = ({ disabled = false }) => {
-  const datda = [
-    {
-      jobImage: "./assets/theme/images/company-logo/1.jpg",
-      name: "Backend Developer",
-      salary: "CollegeHummor",
-      address: "New York, NY 10011 (Chelsea area)",
-      description: "Back-end development experience in PHP 5, and a strong understanding of Object Oriented Programming within an MVC framework",
-      dueDate: "16 hours ago"
-    },
-    {
-      jobImage: "./assets/theme/images/company-logo/2.jpg",
-      name: "Software Developer/Analyst - Web Developer",
-      salary: "University of Texas at Austin",
-      address: "Austin, TX",
-      description: "Experience in an environment using a programming language such as PHP. To build and maintain websites for the College of Fine Arts",
-      dueDate: "1 day ago"
-    },
-    {
-      jobImage: "./assets/theme/images/company-logo/3.jpg",
-      name: "Full Stack Web Developer, Internal Tools",
-      salary: "Krossover",
-      address: "New York, NY 10011 (Chelsea area)",
-      description: "PHP and/or Java. Architect features with the development team. Krossover is looking for a Web Application Developer to join our team of smart developers",
-      dueDate: "15 minutes ago"
-    },
-    {
-      jobImage: "./assets/theme/images/company-logo/4.jpg",
-      name: "Entry Level - Software Engineer",
-      salary: "Tektronix",
-      address: "Beaverton, OR",
-      description: "Experience with PHP, Python, Perl, Ruby, Node.js,REST. Entry Level - Software Engineer.",
-      dueDate: "3 days ago"
-    },
-    {
-      jobImage: "./assets/theme/images/company-logo/5.jpg",
-      name: "PHP Engineer",
-      rating: "2,983",
-      salary: "Shutterstock",
-      address: "New York, NY",
-      description: "SQL and PHP. Experience with PHP Storm IDE preferred. Our client is growing their team and is in immediate need of a PHP Developer.",
-      dueDate: "3 days ago"
-    },
-  ];
 
   const [data, setData] = useState([]);
 
@@ -309,7 +266,7 @@ const JobList = ({ disabled = false }) => {
                             </div>
                             <div class="col-md-11">
                               <h3 class="no-margin-top">
-                                <Link to="/job-details">
+                                <Link to={`/job-details/${item._id}`}>
                                   {item.name}{" "}
                                   <i class="fa fa-link color-white-mute font-1x"></i>
                                 </Link>
