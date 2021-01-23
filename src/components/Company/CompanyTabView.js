@@ -1,18 +1,22 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
-
-
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import SwipeableViews from "react-swipeable-views";
+import ListReview from "./ListReview";
+import queryString from "query-string";
+import CompanyService from "../../services/CompanyService";
 import {
   Container,
-  AppBar, Tabs, Tab, Typography, Box
-} from '@material-ui/core';
+  AppBar,
+  Tabs,
+  Tab,
+  Typography,
+  Box,
+} from "@material-ui/core";
 
-
-import CompanyDescription from './CompanyDescription';
-import CompanyJobs from './CompanyJobs';
-import CompanyReviews from './CompanyReviews';
+import CompanyDescription from "./CompanyDescription";
+import CompanyJobs from "./CompanyJobs";
+import CompanyReviews from "./CompanyReviews";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -28,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   MuiPaperElevation4: {
     boxShadow: "none",
-  }
+  },
 }));
 
 function TabPanel(props) {
@@ -60,14 +64,29 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
 
-
 const CompanyTabView = () => {
   const classes = useStyles();
+  const [reviews, setReviews] = React.useState([]);
 
+  useEffect(() => {
+    const { id } = queryString.parse(location.search);
+    retrieveCompanies(id);
+  }, []);
+
+  const retrieveCompanies = (id) => {
+    CompanyService.getDetail(id)
+      .then((response) => {
+        setReviews(response.data.result.ListReviews);
+        console.log(response.data.result.ListReviews);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -79,40 +98,41 @@ const CompanyTabView = () => {
     setValue(index);
   };
 
-  return (<Container className={classes.card} maxWidth="lg">
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
+  return (
+    <Container className={classes.card} maxWidth="lg">
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="full width tabs example"
+          >
+            <Tab label="Thông tin chung" {...a11yProps(0)} />
+            <Tab label="Thông tin tuyển dụng" {...a11yProps(1)} />
+            <Tab label="Reviews" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
         >
-          <Tab label="Thông tin chung" {...a11yProps(0)} />
-          <Tab label="Thông tin tuyển dụng" {...a11yProps(1)} />
-          <Tab label="Reviews" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <CompanyDescription />
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <CompanyJobs/>
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          <CompanyReviews />
-        </TabPanel>
-      </SwipeableViews>
-    </div>
-  </Container>);
-}
-
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <CompanyDescription />
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <CompanyJobs />
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <ListReview ListReviews={reviews} />
+          </TabPanel>
+        </SwipeableViews>
+      </div>
+    </Container>
+  );
+};
 
 export default CompanyTabView;

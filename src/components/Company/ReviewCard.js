@@ -47,7 +47,7 @@ const PostCard = ({ reviewerName, createDate, content, avatar, rating }) => {
   const [value, setValue] = React.useState(2);
   const classes = useStyles();
   return (
-    <Card>
+    <Card style={{ border: "solid 0.1px" }}>
       <CardHeader
         avatar={avatar}
         title={reviewerName}
