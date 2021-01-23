@@ -36,12 +36,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const CompanyDescription = () => {
+const CompanyDescription = ({ info }) => {
   const classes = useStyles();
 
   return (<div>
 
     <div className={classes.root}>
+      <p>{info.description}</p>
+      <br />
       <Grid container spacing={3}>
         <Grid item xs={4}>
           <Box className={classes.image}>
@@ -60,13 +62,13 @@ const CompanyDescription = () => {
         </Grid>
       </Grid>
     </div>
-    <p>Thông tin về FWD Việt Nam</p>
+    <p>Thông tin về {info.name}</p>
 
     <p>
-      FWD Việt Nam được thành lập vào năm 2016 và là thành viên của Tập đoàn bảo hiểm FWD - có phạm vi hoạt động rộng khắp Châu Á. Với chiến lược ưu tiên phát triển công nghệ số, FWD Việt Nam là công ty bảo hiểm khác biệt, có nền tảng vững chắc dựa trên các thế mạnh riêng có: sản phẩm đột phá, hệ thống phân phối tập trung vào chất lượng, số hóa mọi quy trình và chiến lược thương hiệu khác biệt.
+      {info.name} được thành lập vào năm 2016 và là thành viên của Tập đoàn bảo hiểm FWD - có phạm vi hoạt động rộng khắp Châu Á. Với chiến lược ưu tiên phát triển công nghệ số, {info.name} là công ty bảo hiểm khác biệt, có nền tảng vững chắc dựa trên các thế mạnh riêng có: sản phẩm đột phá, hệ thống phân phối tập trung vào chất lượng, số hóa mọi quy trình và chiến lược thương hiệu khác biệt.
     </p>
     <p>
-      FWD Việt Nam liên tục là một trong những công ty bảo hiểm nhân thọ có tốc độ tăng trưởng nhanh nhất thị trường.
+      {info.name} liên tục là một trong những công ty bảo hiểm nhân thọ có tốc độ tăng trưởng nhanh nhất thị trường.
     </p>
     <p>Để biết thêm thông tin, vui lòng truy cập website www.fwd.com.vn.</p>
 

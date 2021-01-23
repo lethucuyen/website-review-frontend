@@ -8,7 +8,12 @@ const findByTitle = (data = {}) => {
   return http.post("/company/search", data);
 };
 
+const findById = (data = {}) => {
+  return http.post("/company/details-company", data);
+};
+
 export default {
   getAll,
   findByTitle,
+  findById,
 };

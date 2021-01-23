@@ -40,7 +40,7 @@ const NearestReviewListView = () => {
   };
 
   return (<div className={classes.paper}>
-    <h4 className="font-bold">Review mới nhất</h4>
+    <h4 className="font-bold">Review liên quan</h4>
     <Grid container spacing={2} className={classes.mainContent}>
       {reviews.map((item) => (
         <Grid item xs={12} key={uuid()}>

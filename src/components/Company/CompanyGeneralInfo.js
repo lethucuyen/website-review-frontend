@@ -68,7 +68,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const CompanyJobListView = () => {
+const CompanyJobListView = ({ info }) => {
   const classes = useStyles();
 
   return (<Container className={classes.card} maxWidth="lg">
@@ -82,16 +82,16 @@ const CompanyJobListView = () => {
         <Grid item sm container>
           <Grid item xs container spacing={2}>
             <Grid item xs>
-              <h4 className="font-bold">bbc Vietnam</h4>
+              <h4 className="font-bold">{info.name}</h4>
             </Grid>
-            <Grid item container/>
+            <Grid item container />
             <Grid item>
               <div className={classes.root}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <Grid item container alignItems="flex-start">
                       <LocationOn />
-                      <Typography variant="body2" color="textSecondary" component="p">District 12, Ho Chi Minh</Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">District 12, {info.address}</Typography>
                     </Grid>
                   </Grid>
                   <Grid item xs={6}>
@@ -133,6 +133,12 @@ const CompanyJobListView = () => {
               e.preventDefault();
               // handleSubmit(formData);
             }}>Theo dõi</Button>
+          </Grid>
+          <Grid item style={{ "marginTop": "10px" }}>
+            <Button className={classes.btn} variant="outlined" color="secondary" onClick={(e) => {
+              e.preventDefault();
+              // handleSubmit(formData);
+            }}>Nộp đơn ứng tuyển</Button>
           </Grid>
         </Grid>
       </Grid>

@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const CompanyJobs = () => {
+const CompanyJobs = ({ info }) => {
   const classes = useStyles();
 
   return (<div>

@@ -65,7 +65,7 @@ function a11yProps(index) {
 }
 
 
-const CompanyTabView = () => {
+const CompanyTabView = ({ info }) => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -101,10 +101,10 @@ const CompanyTabView = () => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <CompanyDescription />
+          <CompanyDescription info={info} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <CompanyJobs/>
+          <CompanyJobs info={info} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           <CompanyReviews />
