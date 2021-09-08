@@ -1,3 +1,10 @@
+# Company Reviews Website
+
+## Screenshots
+<img src="./public/screenshot-01.PNG" width="750"/>
+<img src="./public/screenshot-02.PNG" width="750"/>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
